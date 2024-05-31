@@ -217,11 +217,12 @@
 			};
 			buildConfigurationList = 47E188222C09271A00F31935 /* Build configuration list for PBXProject "TicketSearcher" */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = en;
+			developmentRegion = ru;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 47E1881E2C09271A00F31935;
 			productRefGroup = 47E188282C09271B00F31935 /* Products */;
