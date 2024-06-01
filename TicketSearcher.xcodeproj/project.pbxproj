@@ -10,6 +10,25 @@
 		47063AF02C09445800C5BA1E /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 47063AEF2C09445800C5BA1E /* .swiftlint.yml */; };
 		47063AF12C0944BA00C5BA1E /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 47063AEF2C09445800C5BA1E /* .swiftlint.yml */; };
 		47063AF22C0944BA00C5BA1E /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 47063AEF2C09445800C5BA1E /* .swiftlint.yml */; };
+		47063AF62C094E3000C5BA1E /* FontHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47063AF52C094E3000C5BA1E /* FontHelper.swift */; };
+		47063AF92C09557900C5BA1E /* AirTicketsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47063AF82C09557900C5BA1E /* AirTicketsView.swift */; };
+		47063AFC2C0955AE00C5BA1E /* AirTicketsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47063AFB2C0955AE00C5BA1E /* AirTicketsVM.swift */; };
+		47063AFF2C0955E000C5BA1E /* TabBarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47063AFE2C0955E000C5BA1E /* TabBarModel.swift */; };
+		47063B012C09572100C5BA1E /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47063B002C09572100C5BA1E /* MainView.swift */; };
+		47063B042C09575400C5BA1E /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47063B032C09575400C5BA1E /* AppCoordinator.swift */; };
+		47063B062C09579D00C5BA1E /* HotelsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47063B052C09579D00C5BA1E /* HotelsView.swift */; };
+		47063B082C0957FC00C5BA1E /* AirTicketsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47063B072C0957FC00C5BA1E /* AirTicketsModel.swift */; };
+		47063B0A2C09580E00C5BA1E /* HotelsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47063B092C09580E00C5BA1E /* HotelsModel.swift */; };
+		47063B0D2C0A452D00C5BA1E /* HotelsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47063B0C2C0A452D00C5BA1E /* HotelsVM.swift */; };
+		47063B0F2C0A45C600C5BA1E /* ShorterVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47063B0E2C0A45C600C5BA1E /* ShorterVM.swift */; };
+		47063B112C0A45F100C5BA1E /* NotificationsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47063B102C0A45F100C5BA1E /* NotificationsVM.swift */; };
+		47063B132C0A460D00C5BA1E /* ProfileVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47063B122C0A460D00C5BA1E /* ProfileVM.swift */; };
+		47063B152C0A46E400C5BA1E /* ShorterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47063B142C0A46E400C5BA1E /* ShorterView.swift */; };
+		47063B172C0A46F200C5BA1E /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47063B162C0A46F200C5BA1E /* NotificationsView.swift */; };
+		47063B192C0A46FD00C5BA1E /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47063B182C0A46FD00C5BA1E /* ProfileView.swift */; };
+		477338102C0AC0B30076AEF9 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4773380F2C0AC0B30076AEF9 /* TabBarView.swift */; };
+		477338122C0ACCA10076AEF9 /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477338112C0ACCA10076AEF9 /* ImageHelper.swift */; };
+		477338142C0ACF3D0076AEF9 /* TabBarVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477338132C0ACF3D0076AEF9 /* TabBarVM.swift */; };
 		47E1882B2C09271B00F31935 /* TicketSearcherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E1882A2C09271B00F31935 /* TicketSearcherApp.swift */; };
 		47E1882D2C09271B00F31935 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E1882C2C09271B00F31935 /* ContentView.swift */; };
 		47E1882F2C09271B00F31935 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E1882E2C09271B00F31935 /* Item.swift */; };
@@ -39,6 +58,25 @@
 
 /* Begin PBXFileReference section */
 		47063AEF2C09445800C5BA1E /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		47063AF52C094E3000C5BA1E /* FontHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontHelper.swift; sourceTree = "<group>"; };
+		47063AF82C09557900C5BA1E /* AirTicketsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirTicketsView.swift; sourceTree = "<group>"; };
+		47063AFB2C0955AE00C5BA1E /* AirTicketsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirTicketsVM.swift; sourceTree = "<group>"; };
+		47063AFE2C0955E000C5BA1E /* TabBarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarModel.swift; sourceTree = "<group>"; };
+		47063B002C09572100C5BA1E /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		47063B032C09575400C5BA1E /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		47063B052C09579D00C5BA1E /* HotelsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelsView.swift; sourceTree = "<group>"; };
+		47063B072C0957FC00C5BA1E /* AirTicketsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirTicketsModel.swift; sourceTree = "<group>"; };
+		47063B092C09580E00C5BA1E /* HotelsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelsModel.swift; sourceTree = "<group>"; };
+		47063B0C2C0A452D00C5BA1E /* HotelsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelsVM.swift; sourceTree = "<group>"; };
+		47063B0E2C0A45C600C5BA1E /* ShorterVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShorterVM.swift; sourceTree = "<group>"; };
+		47063B102C0A45F100C5BA1E /* NotificationsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsVM.swift; sourceTree = "<group>"; };
+		47063B122C0A460D00C5BA1E /* ProfileVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVM.swift; sourceTree = "<group>"; };
+		47063B142C0A46E400C5BA1E /* ShorterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShorterView.swift; sourceTree = "<group>"; };
+		47063B162C0A46F200C5BA1E /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
+		47063B182C0A46FD00C5BA1E /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		4773380F2C0AC0B30076AEF9 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		477338112C0ACCA10076AEF9 /* ImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
+		477338132C0ACF3D0076AEF9 /* TabBarVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVM.swift; sourceTree = "<group>"; };
 		47E188272C09271B00F31935 /* TicketSearcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicketSearcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		47E1882A2C09271B00F31935 /* TicketSearcherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketSearcherApp.swift; sourceTree = "<group>"; };
 		47E1882C2C09271B00F31935 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -77,6 +115,77 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		47063AF32C094E0200C5BA1E /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				47063AF42C094E1700C5BA1E /* Helpers */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		47063AF42C094E1700C5BA1E /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				47063AF52C094E3000C5BA1E /* FontHelper.swift */,
+				477338112C0ACCA10076AEF9 /* ImageHelper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		47063AF72C09554700C5BA1E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				47063B002C09572100C5BA1E /* MainView.swift */,
+				4773380F2C0AC0B30076AEF9 /* TabBarView.swift */,
+				47063AF82C09557900C5BA1E /* AirTicketsView.swift */,
+				47063B052C09579D00C5BA1E /* HotelsView.swift */,
+				47063B142C0A46E400C5BA1E /* ShorterView.swift */,
+				47063B162C0A46F200C5BA1E /* NotificationsView.swift */,
+				47063B182C0A46FD00C5BA1E /* ProfileView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		47063AFA2C09558E00C5BA1E /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				477338132C0ACF3D0076AEF9 /* TabBarVM.swift */,
+				47063AFB2C0955AE00C5BA1E /* AirTicketsVM.swift */,
+				47063B0C2C0A452D00C5BA1E /* HotelsVM.swift */,
+				47063B0E2C0A45C600C5BA1E /* ShorterVM.swift */,
+				47063B102C0A45F100C5BA1E /* NotificationsVM.swift */,
+				47063B122C0A460D00C5BA1E /* ProfileVM.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		47063AFD2C0955C800C5BA1E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				47063AFE2C0955E000C5BA1E /* TabBarModel.swift */,
+				47063B072C0957FC00C5BA1E /* AirTicketsModel.swift */,
+				47063B092C09580E00C5BA1E /* HotelsModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		47063B022C09573E00C5BA1E /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				47063B032C09575400C5BA1E /* AppCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		47063B0B2C0A448000C5BA1E /* SwiftDataLegacy */ = {
+			isa = PBXGroup;
+			children = (
+				47E1882C2C09271B00F31935 /* ContentView.swift */,
+				47E1882E2C09271B00F31935 /* Item.swift */,
+			);
+			path = SwiftDataLegacy;
+			sourceTree = "<group>";
+		};
 		47E1881E2C09271A00F31935 = {
 			isa = PBXGroup;
 			children = (
@@ -102,8 +211,12 @@
 			isa = PBXGroup;
 			children = (
 				47E1882A2C09271B00F31935 /* TicketSearcherApp.swift */,
-				47E1882C2C09271B00F31935 /* ContentView.swift */,
-				47E1882E2C09271B00F31935 /* Item.swift */,
+				47063B022C09573E00C5BA1E /* Coordinators */,
+				47063AFD2C0955C800C5BA1E /* Models */,
+				47063AFA2C09558E00C5BA1E /* ViewModels */,
+				47063AF72C09554700C5BA1E /* Views */,
+				47063AF32C094E0200C5BA1E /* Utilities */,
+				47063B0B2C0A448000C5BA1E /* SwiftDataLegacy */,
 				47E188302C09271F00F31935 /* Assets.xcassets */,
 				47E188322C09271F00F31935 /* Preview Content */,
 			);
@@ -292,9 +405,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47063B0A2C09580E00C5BA1E /* HotelsModel.swift in Sources */,
 				47E1882D2C09271B00F31935 /* ContentView.swift in Sources */,
+				47063B152C0A46E400C5BA1E /* ShorterView.swift in Sources */,
+				47063B012C09572100C5BA1E /* MainView.swift in Sources */,
+				47063AFC2C0955AE00C5BA1E /* AirTicketsVM.swift in Sources */,
+				47063B062C09579D00C5BA1E /* HotelsView.swift in Sources */,
+				47063AF92C09557900C5BA1E /* AirTicketsView.swift in Sources */,
 				47E1882F2C09271B00F31935 /* Item.swift in Sources */,
+				47063AF62C094E3000C5BA1E /* FontHelper.swift in Sources */,
+				47063B0F2C0A45C600C5BA1E /* ShorterVM.swift in Sources */,
+				47063B0D2C0A452D00C5BA1E /* HotelsVM.swift in Sources */,
 				47E1882B2C09271B00F31935 /* TicketSearcherApp.swift in Sources */,
+				47063B112C0A45F100C5BA1E /* NotificationsVM.swift in Sources */,
+				47063B042C09575400C5BA1E /* AppCoordinator.swift in Sources */,
+				47063AFF2C0955E000C5BA1E /* TabBarModel.swift in Sources */,
+				47063B132C0A460D00C5BA1E /* ProfileVM.swift in Sources */,
+				477338142C0ACF3D0076AEF9 /* TabBarVM.swift in Sources */,
+				47063B192C0A46FD00C5BA1E /* ProfileView.swift in Sources */,
+				47063B082C0957FC00C5BA1E /* AirTicketsModel.swift in Sources */,
+				477338102C0AC0B30076AEF9 /* TabBarView.swift in Sources */,
+				47063B172C0A46F200C5BA1E /* NotificationsView.swift in Sources */,
+				477338122C0ACCA10076AEF9 /* ImageHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

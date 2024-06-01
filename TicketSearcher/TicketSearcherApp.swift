@@ -10,6 +10,8 @@ import SwiftData
 
 @main
 struct TicketSearcherApp: App {
+    @ObservedObject private var appCoordinator = AppCoordinator()
+
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Item.self,
@@ -25,8 +27,9 @@ struct TicketSearcherApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView()
         }
         .modelContainer(sharedModelContainer)
+        .environmentObject(appCoordinator)
     }
 }
