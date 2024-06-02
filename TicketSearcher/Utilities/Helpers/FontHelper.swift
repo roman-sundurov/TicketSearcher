@@ -40,7 +40,6 @@ public extension Text {
     func fontTabText() -> some View {
         self.font(FontHelper.customFont(size: 10, weight: .regular))
     }
-
 }
 
 struct FontHelper {

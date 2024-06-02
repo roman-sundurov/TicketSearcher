@@ -25,6 +25,13 @@ enum AssetImage: String {
     case shorterTabBarActive = "ShorterTabBarActive"
     case shorterTabBarNotActive = "ShorterTabBarNotActive"
 
+    // MARK: - AirTicketsScreen
+    case searchIcon = "SearchIcon"
+    case offerIcon = "OfferIcon"
+    case offer1 = "Offer1"
+    case offer2 = "Offer2"
+    case offer3 = "Offer3"
+
     var image: Image {
         return Image(self.rawValue)
     }
