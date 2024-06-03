@@ -47,3 +47,12 @@ struct FontHelper {
         return Font.system(size: size, weight: weight, design: .default)
     }
 }
+
+public extension Text {
+    func fontRoutOptionsButton() -> some View {
+        self
+            .fontText2()
+            .foregroundStyle(Color.tsWhite)
+            .multilineTextAlignment(.center)
+    }
+}

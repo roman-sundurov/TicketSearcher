@@ -24,18 +24,18 @@ struct OfferView: View {
             }
             Text(offer.title)
                 .fontTitle3()
-                .foregroundStyle(Color.tsGrey8)
+                .foregroundStyle(Color.tsWhite)
                 .padding(.top, 8)
             Text(offer.town)
                 .fontText2()
-                .foregroundStyle(Color.tsGrey8)
+                .foregroundStyle(Color.tsWhite)
                 .padding(.top, 8)
             HStack(spacing: 0) {
                 AssetImage.offerIcon.image
                     .frame(width: 17, height: 17)
                 Text("от \(offer.price.value.priceformatNumber())")
                     .fontText2()
-                    .foregroundStyle(Color.tsGrey8)
+                    .foregroundStyle(Color.tsWhite)
                     .padding(.leading, 4)
             }
             .padding(.top, 4)

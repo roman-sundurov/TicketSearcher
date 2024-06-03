@@ -10,8 +10,14 @@ import Alamofire
 import SwiftUI
 
 class AirTicketsVM: ObservableObject {
+    static var shared = AirTicketsVM()
+
     @Published var offers: [Offer] = []
     @Published var errorMessage: String?
+
+    @Published var from: String = ""
+    @Published var to: String = ""
+    @Published var showSearchSheet = false
 
     var networkService = NetworkService.shared
 
@@ -22,7 +28,6 @@ class AirTicketsVM: ObservableObject {
     ]
 
     init() {
-        // TODO: - Add fetchData function
         networkService.getAirTicketsOffers { [weak self] result in
             switch result {
             case .success(let response):
@@ -38,5 +43,7 @@ class AirTicketsVM: ObservableObject {
         }
     }
 
-    // TODO: - Add fetchData function
+    func anywhereButton() {
+        to = "Куда угодно"
+    }
 }

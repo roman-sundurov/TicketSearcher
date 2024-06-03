@@ -17,7 +17,10 @@ struct MainView: View {
                 Spacer()
                 TabBarView(viewModel: TabBarVM(activeScreen: appCoordinator.activeScreen))
             }
-            .ignoresSafeArea(.container, edges: .bottom)
+            .ignoresSafeArea([.container, .keyboard], edges: .bottom)
+        }
+        .sheet(isPresented: $appCoordinator.showSheet) {
+            appCoordinator.rootSheet
         }
     }
 }

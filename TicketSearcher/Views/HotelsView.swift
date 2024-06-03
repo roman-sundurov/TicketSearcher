@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct HotelsView: View {
+    @EnvironmentObject var appCoordinator: AppCoordinator
     @StateObject var viewModel: HotelsVM
-    var coordinator: AppCoordinator
 
     var body: some View {
         Text("Страница \"Отели\"")
@@ -17,5 +17,5 @@ struct HotelsView: View {
 }
 
 #Preview {
-    HotelsView(viewModel: HotelsVM(), coordinator: AppCoordinator())
+    HotelsView(viewModel: HotelsVM())
 }

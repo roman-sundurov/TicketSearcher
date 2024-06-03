@@ -31,6 +31,19 @@ enum AssetImage: String {
     case offer1 = "Offer1"
     case offer2 = "Offer2"
     case offer3 = "Offer3"
+    case removeTextButton = "RemoveTextButton"
+
+    // AirTicketsSearchSheet
+    case closeSheetIcon = "CloseSheetIcon"
+    case anywhereButton = "AnywhereButton"
+    case difficultRouteButton = "DifficultRouteButton"
+    case hotTicketsButton = "HotTicketsButton"
+    case weekendButton = "WeekendButton"
+    case airTicketsSheetFrom = "AirTicketsSheetFrom"
+    case airTicketsSheetTo = "AirTicketsSheetTo"
+    case destinationIstanbul = "DestinationIstanbul"
+    case destinationPhuket = "DestinationPhuket"
+    case destinationSochi = "DestinationSochi"
 
     var image: Image {
         return Image(self.rawValue)

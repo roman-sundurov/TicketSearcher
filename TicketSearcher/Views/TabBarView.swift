@@ -14,7 +14,6 @@ struct TabBarView: View {
     var body: some View {
             HStack {
                 ForEach(viewModel.buttonsDetails, id: \.self) { button in
-                    Spacer(minLength: 0)
                     VStack {
                         button.icon
                             .frame(width: 24, height: 24)
@@ -26,11 +25,11 @@ struct TabBarView: View {
                     .onTapGesture {
                         appCoordinator.activeScreen = button.screen
                     }
-                    Spacer(minLength: 0)
                 }
             }
             .padding(.top, 6)
             .padding(.bottom, 45)
+            .padding(.horizontal, 4)
             .background(Color.tsBlack)
         // }
     }

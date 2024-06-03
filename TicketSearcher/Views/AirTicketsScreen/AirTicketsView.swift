@@ -8,79 +8,144 @@
 import SwiftUI
 
 struct AirTicketsView: View {
-    @StateObject var viewModel: AirTicketsVM
-    var coordinator: AppCoordinator
-
-    @State var from: String = ""
-    @State var to: String = ""
+    @EnvironmentObject var appCoordinator: AppCoordinator
+    @EnvironmentObject var viewModel: AirTicketsVM
+    // @StateObject var viewModel: AirTicketsVM
 
     var body: some View {
-        VStack {
-            Text("Поиск дешевых авиабилетов")
-                .fontTitle1()
-                .foregroundStyle(Color.noNameColors1)
-                .frame(width: 172)
-                .multilineTextAlignment(.center)
+            VStack {
+                ScrollView(.vertical) {
+                    Text("Поиск дешевых авиабилетов")
+                        .fontTitle1()
+                        .foregroundStyle(Color.noNameColors1)
+                        .frame(width: 172)
+                        .multilineTextAlignment(.center)
 
-            // MARK: - From - To block
-            HStack(spacing: 0) {
-                HStack(spacing: 0) {
-                    AssetImage.searchIcon.image
-                        .frame(width: 16, height: 16)
-                        .padding(.leading, 12)
-                        .padding(.trailing, 21)
+                    HStack(spacing: 0) {
+                        HStack(spacing: 0) {
+                            AssetImage.searchIcon.image
+                                .frame(width: 16, height: 16)
+                                .padding(.leading, 12)
+                                .padding(.trailing, 21)
 
-                    VStack {
-                        TextField("", text: $from)
-                            .placeholder(when: from.isEmpty) {
-                                Text("Откуда - Москва").foregroundColor(.gray)
+                            VStack {
+                                // MARK: - From block
+                                HStack {
+                                    TextField("", text: $viewModel.from)
+                                        .placeholder(when: viewModel.from.isEmpty) {
+                                            Text("Откуда - Москва").foregroundColor(.gray)
+                                        }
+                                        .foregroundStyle(Color.white)
+                                        .onChange(of: viewModel.from) { oldText, newText in
+                                            let filtered = newText.filter { $0.isCyrillic }
+                                            if filtered != newText {
+                                                viewModel.from = filtered
+                                            }
+                                        }
+                                        .onTapGesture {
+                                            print("Tap From fromTextField") // Using for avoid dissmis keyboard
+                                        }
+
+                                    if !viewModel.from.isEmpty {
+                                        AssetImage.removeTextButton.image
+                                            .frame(width: 9, height: 9)
+                                            .onTapGesture {
+                                                viewModel.from = ""
+                                            }
+                                    }
+                                }
+
+
+                                Divider()
+                                    .background(Color.tsGrey6)
+                                    .frame(height: 1)
+
+                                // MARK: - To block
+                                HStack {
+                                    // I commented on the TextFiled and used the Text below because the technical task says the modal window should open after the user taps the destination field.
+                                
+                                    // TextField("", text: $to)
+                                    //     .placeholder(when: to.isEmpty) {
+                                    //         Text("Куда - Турция").foregroundColor(.gray)
+                                    //     }
+                                    //     .foregroundStyle(Color.white)
+                                    //     .onChange(of: to) { text in
+                                    //         let filtered = text.filter { $0.isCyrillic }
+                                    //         if filtered != text {
+                                    //             self.to = filtered
+                                    //         }
+                                    //     }
+                                    //     .onTapGesture {
+                                    //         print("Tap From toTextField") // Using for avoid dissmis keyboard
+                                    //         showSearchSheet = true
+                                    //     }
+                                
+                                    Text(viewModel.to)
+                                        .placeholder(when: viewModel.to.isEmpty) {
+                                            Text("Куда - Турция").foregroundColor(.gray)
+                                        }
+                                        .foregroundStyle(Color.white)
+                                        .onTapGesture {
+                                            print("Tap From toTextField") // Using for avoid dissmis keyboard
+                                            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                                            // viewModel.showSearchSheet = true
+                                            appCoordinator.activeSheet = .airTickets1Search
+                                        }
+
+                                    Spacer(minLength: 0)
+                                
+                                    if !viewModel.to.isEmpty {
+                                        AssetImage.removeTextButton.image
+                                            .frame(width: 9, height: 9)
+                                            .onTapGesture {
+                                                viewModel.to = ""
+                                            }
+                                    }
+                                }
                             }
-                            .foregroundStyle(Color.white)
-                        Divider()
-                            .background(Color.tsGrey6)
-                            .frame(height: 1)
+                            .padding(.vertical, 16)
+                            .padding(.trailing, 16)
+                        }
+                        .background(Color.tsGrey4)
+                        .clipShape(RoundedRectangle(cornerRadius: 16), style: FillStyle())
+                        .padding(16)
+                    }
+                    .background(Color.tsGrey2)
+                    .clipShape(RoundedRectangle(cornerRadius: 16), style: FillStyle())
+                    .padding(.top, 38)
+                    .padding(.horizontal, 16)
 
-                        TextField("", text: $to)
-                            .placeholder(when: to.isEmpty) {
-                                Text("Куда - Турция").foregroundColor(.gray)
+                    // MARK: - Offers
+                    HStack {
+                        Text("Музыкально отлететь")
+                            .fontTitle1()
+                            .foregroundStyle(Color.noNameColors1)
+                        Spacer()
+                    }
+                    .padding(.top, 32)
+                    .padding(.horizontal, 16)
+
+                    ScrollView(.horizontal) {
+                        HStack(spacing: 20) {
+                            ForEach(viewModel.offers, id: \.self) { offer in
+                                OfferView(offer: offer, offerImages: viewModel.offerImages)
                             }
-                            .foregroundStyle(Color.white)
+                        }
                     }
-                    .padding(.vertical, 16)
-                    .padding(.trailing, 16)
-                }
-                .background(Color.tsGrey4)
-                .clipShape(RoundedRectangle(cornerRadius: 16), style: FillStyle())
-                .padding(16)
-            }
-            .background(Color.tsGrey2)
-            .clipShape(RoundedRectangle(cornerRadius: 16), style: FillStyle())
-            .padding(.top, 38)
-            .padding(.horizontal, 16)
+                    .scrollIndicators(.visible)
+                    .padding(.top, 26)
 
-            // MARK: - Offers
-            HStack {
-                Text("Музыкально отлететь")
-                    .fontTitle1()
-                    .foregroundStyle(Color.noNameColors1)
-                Spacer()
-            }
-            .padding(.top, 32)
-            .padding(.horizontal, 16)
-
-            ScrollView(.horizontal) {
-                HStack(spacing: 20) {
-                    ForEach(viewModel.offers, id: \.self) { offer in
-                        OfferView(offer: offer, offerImages: viewModel.offerImages)
-                    }
+                    Spacer()
                 }
             }
-            .scrollIndicators(.visible)
-            .padding(.top, 26)
-
-            Spacer()
-        }
-        .background(Color.tsBlack)
+            .background(
+                Color.tsBlack
+                    // .ignoresSafeArea()
+            )
+            .onTapGesture {
+                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+            }
+        // }
     }
 }
 
@@ -97,6 +162,6 @@ extension View {
     }
 }
 
-// #Preview {
-//     AirTicketsView(viewModel: AirTicketsVM(), coordinator: AppCoordinator())
-// }
+#Preview {
+    AirTicketsView()
+}
