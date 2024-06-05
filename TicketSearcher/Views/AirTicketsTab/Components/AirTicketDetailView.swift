@@ -114,7 +114,6 @@ struct AirTicketDetailView: View {
             .background(Color.tsGrey3)
             .clipShape(RoundedRectangle(cornerRadius: 8), style: FillStyle())
             .layoutPriority(1)
-            // .padding(.top, detailedTicket.badge != nil ? 16: 0)
             
             if let badge = detailedTicket.badge {
                 VStack {
@@ -135,11 +134,11 @@ struct AirTicketDetailView: View {
                 }
                 .padding(.top, -10)
             }
-
         }
     }
 }
 
+// MARK: - Preview
 var previewDetailedTicket = DetailedTicket(
     id: 101,
     badge: "Самый удобный",
@@ -164,12 +163,6 @@ var previewDetailedTicket = DetailedTicket(
     isExchangable: true
 )
 #Preview {
-    // VStack {
-    //     Spacer()
-
-        AirTicketDetailView(detailedTicket: previewDetailedTicket)
-            .environmentObject(AirTicketsVM.shared)
-        
-    //     Spacer()
-    // }
+    AirTicketDetailView(detailedTicket: previewDetailedTicket)
+        .environmentObject(AirTicketsVM.shared)
 }

@@ -30,7 +30,7 @@ struct TicketSearcherApp: App {
         WindowGroup {
             MainView()
         }
-        // .modelContainer(sharedModelContainer) Commented for preparing for implement SwiftData
+        // .modelContainer(sharedModelContainer) | Commented for preparing for implement SwiftData
         .environmentObject(appCoordinator)
     }
 }

@@ -23,27 +23,27 @@ struct AirTickets1SearchSheet: View {
                         AssetImage.airTicketsSheetFrom.image
                             .frame(width: 16, height: 16)
 
-                        TextField("", text: $viewModel.from)
-                            .placeholder(when: viewModel.from.isEmpty) {
+                        TextField("", text: $viewModel.fromCity)
+                            .placeholder(when: viewModel.fromCity.isEmpty) {
                                 Text("Откуда - Москва").foregroundColor(.gray)
                             }
                             .foregroundStyle(Color.white)
                             .padding(.leading, 8)
-                            .onChange(of: viewModel.from) { oldText, newText in
+                            .onChange(of: viewModel.fromCity) { _, newText in
                                 let filtered = newText.filter { $0.isCyrillic }
                                 if filtered != newText {
-                                    viewModel.from = filtered
+                                    viewModel.fromCity = filtered
                                 }
                             }
                             .onTapGesture {
                                 print("Tap From fromTextField") // Using for avoid dissmis keyboard
                             }
 
-                        if !viewModel.from.isEmpty {
+                        if !viewModel.fromCity.isEmpty {
                             AssetImage.removeTextButton.image
                                 .frame(width: 9, height: 9)
                                 .onTapGesture {
-                                    viewModel.from = ""
+                                    viewModel.fromCity = ""
                                 }
                         }
                     }
@@ -58,16 +58,16 @@ struct AirTickets1SearchSheet: View {
                         AssetImage.airTicketsSheetTo.image
                             .frame(width: 16, height: 16)
 
-                        TextField("", text: $viewModel.to)
-                            .placeholder(when: viewModel.to.isEmpty) {
+                        TextField("", text: $viewModel.toCity)
+                            .placeholder(when: viewModel.toCity.isEmpty) {
                                 Text("Куда - Турция").foregroundColor(.gray)
                             }
                             .foregroundStyle(Color.white)
                             .padding(.leading, 8)
-                            .onChange(of: viewModel.to) { oldText, newText in
+                            .onChange(of: viewModel.toCity) { _, newText in
                                 let filtered = newText.filter { $0.isCyrillic }
                                 if filtered != newText {
-                                    self.viewModel.to = filtered
+                                    self.viewModel.toCity = filtered
                                 }
                             }
                             .onTapGesture {
@@ -75,11 +75,11 @@ struct AirTickets1SearchSheet: View {
                                 viewModel.showSearchSheet = true
                             }
 
-                        if !viewModel.to.isEmpty {
+                        if !viewModel.toCity.isEmpty {
                             AssetImage.removeTextButton.image
                                 .frame(width: 9, height: 9)
                                 .onTapGesture {
-                                    viewModel.to = ""
+                                    viewModel.toCity = ""
                                 }
                         }
                     }
@@ -102,6 +102,7 @@ struct AirTickets1SearchSheet: View {
     }
 }
 
+// MARK: - Preview
 #Preview {
     AirTickets1SearchSheet()
 }

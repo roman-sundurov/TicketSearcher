@@ -9,11 +9,7 @@ import Foundation
 
 class NotificationsVM: ObservableObject {
     // TODO: - Add stored data model
-    // @Published var notificationsData: [CountryOffers] = []
 
     init() {
-        // TODO: - Add fetchData function
     }
-
-    // TODO: - Add fetchData function
 }

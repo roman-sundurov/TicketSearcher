@@ -30,26 +30,26 @@ struct AirTicketsStartView: View {
                             VStack {
                                 // MARK: - From block
                                 HStack {
-                                    TextField("", text: $viewModel.from)
-                                        .placeholder(when: viewModel.from.isEmpty) {
+                                    TextField("", text: $viewModel.fromCity)
+                                        .placeholder(when: viewModel.fromCity.isEmpty) {
                                             Text("Откуда - Москва").foregroundColor(.gray)
                                         }
                                         .foregroundStyle(Color.white)
-                                        .onChange(of: viewModel.from) { oldText, newText in
+                                        .onChange(of: viewModel.fromCity) { _, newText in
                                             let filtered = newText.filter { $0.isCyrillic }
                                             if filtered != newText {
-                                                viewModel.from = filtered
+                                                viewModel.fromCity = filtered
                                             }
                                         }
                                         .onTapGesture {
                                             print("Tap From fromTextField") // Using for avoid dissmis keyboard
                                         }
 
-                                    if !viewModel.from.isEmpty {
+                                    if !viewModel.fromCity.isEmpty {
                                         AssetImage.removeTextButton.image
                                             .frame(width: 9, height: 9)
                                             .onTapGesture {
-                                                viewModel.from = ""
+                                                viewModel.fromCity = ""
                                             }
                                     }
                                 }
@@ -61,17 +61,17 @@ struct AirTicketsStartView: View {
 
                                 // MARK: - To block
                                 HStack {
-                                    // I commented on the TextFiled and used the Text below because the technical task says the modal window should open after the user taps the destination field.
+                                    // I commented on the TextFiled and used the Text below because the technical task says the modal window should open after the user taps the destination field. So I leave the TextFiled as the second option.
 
-                                    // TextField("", text: $to)
-                                    //     .placeholder(when: to.isEmpty) {
+                                    // TextField("", text: $toCity)
+                                    //     .placeholder(when: toCity.isEmpty) {
                                     //         Text("Куда - Турция").foregroundColor(.gray)
                                     //     }
                                     //     .foregroundStyle(Color.white)
-                                    //     .onChange(of: to) { text in
+                                    //     .onChange(of: toCity) { text in
                                     //         let filtered = text.filter { $0.isCyrillic }
                                     //         if filtered != text {
-                                    //             self.to = filtered
+                                    //             self.toCity = filtered
                                     //         }
                                     //     }
                                     //     .onTapGesture {
@@ -79,8 +79,8 @@ struct AirTicketsStartView: View {
                                     //         showSearchSheet = true
                                     //     }
 
-                                    Text(viewModel.to)
-                                        .placeholder(when: viewModel.to.isEmpty) {
+                                    Text(viewModel.toCity)
+                                        .placeholder(when: viewModel.toCity.isEmpty) {
                                             Text("Куда - Турция").foregroundColor(.gray)
                                         }
                                         .foregroundStyle(Color.white)
@@ -93,11 +93,11 @@ struct AirTicketsStartView: View {
 
                                     Spacer(minLength: 0)
 
-                                    if !viewModel.to.isEmpty {
+                                    if !viewModel.toCity.isEmpty {
                                         AssetImage.removeTextButton.image
                                             .frame(width: 9, height: 9)
                                             .onTapGesture {
-                                                viewModel.to = ""
+                                                viewModel.toCity = ""
                                             }
                                     }
                                 }
@@ -134,17 +134,6 @@ struct AirTicketsStartView: View {
                     }
                     .scrollIndicators(.visible)
                     .padding(.top, 26)
-
-// #if DEBUG
-//                 Button(action: {
-//                     var network = NetworkService.shared
-//                     network.getFlightToCountry {_ in
-//                         print("getFlightToCountry finish")
-//                     }
-//                 }, label: {
-//                     Text("Test getFlightToCountry")
-//                 })
-// #endif
                 }
             }
             .background(
@@ -154,22 +143,10 @@ struct AirTicketsStartView: View {
             .onTapGesture {
                 UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
             }
-
     }
 }
 
-extension View {
-    func placeholder<Content: View>(
-        when shouldShow: Bool,
-        alignment: Alignment = .leading,
-        @ViewBuilder placeholder: () -> Content) -> some View {
-            ZStack(alignment: alignment) {
-                placeholder().opacity(shouldShow ? 1 : 0)
-                self
-            }
-        }
-}
-
+// MARK: - Preview
 #Preview {
     AirTicketsStartView()
         .environmentObject(AppCoordinator())

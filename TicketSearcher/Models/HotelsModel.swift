@@ -9,5 +9,5 @@ import Foundation
 
 struct HotelsModel {
     // TODO: - update model to use in Hotel screen
-    var testData: Int? = nil
+    var testData: Int?
 }

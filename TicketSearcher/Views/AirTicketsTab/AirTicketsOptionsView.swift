@@ -11,12 +11,12 @@ struct AirTicketsOptionsView: View {
     @EnvironmentObject var appCoordinator: AppCoordinator
     @EnvironmentObject var viewModel: AirTicketsVM
     @State var bottomMenuHeight: CGFloat = 0
-
-
+    
+    
     var thereDateText: (dayMonth: String, weekday: String) {
         viewModel.getDayMonthWeekdayFormat(date: viewModel.thereDate)
     }
-
+    
     var backDateText: (dayMonth: String, weekday: String)? {
         if viewModel.backDate.timeIntervalSince1970 != 0 {
             return viewModel.getDayMonthWeekdayFormat(date: viewModel.backDate)
@@ -24,7 +24,7 @@ struct AirTicketsOptionsView: View {
             return nil
         }
     }
-
+    
     var body: some View {
         ZStack {
             VStack {
@@ -35,30 +35,30 @@ struct AirTicketsOptionsView: View {
                             .onTapGesture {
                                 appCoordinator.activeScreen = .airTicketsCountry
                             }
-
+                        
                         VStack(alignment: .leading) {
-                            Text(viewModel.from + "-" + viewModel.to)
+                            Text(viewModel.fromCity + "-" + viewModel.toCity)
                                 .fontTitle3()
                                 .foregroundStyle(Color.tsWhite)
-
+                            
                             HStack(spacing: 0) {
                                 Text(thereDateText.dayMonth)
                                     .fontTitle3()
                                     .foregroundStyle(Color.tsGrey6)
-
+                                
                                 if let backDateText {
                                     Text("-" + backDateText.dayMonth)
                                         .fontTitle3()
                                         .foregroundStyle(Color.tsGrey6)
                                 }
-
+                                
                                 Text(", 1 пассажир")
                                     .fontTitle3()
                                     .foregroundStyle(Color.tsGrey6)
                             }
                         }
                         .padding(.leading, 8)
-
+                        
                         Spacer(minLength: 0)
                     }
                     .padding(.vertical, 8)
@@ -66,7 +66,7 @@ struct AirTicketsOptionsView: View {
                 }
                 .background(Color.tsGrey3)
                 .padding(.top, 16)
-
+                
                 ScrollView(.vertical) {
                     ForEach(viewModel.detailedTickets, id: \.id) { detailedTicket in
                         AirTicketDetailView(detailedTicket: detailedTicket)
@@ -80,7 +80,7 @@ struct AirTicketsOptionsView: View {
             .onAppear {
                 viewModel.getDetailedFlightData()
             }
-
+            
             VStack {
                 Spacer()
                 HStack {
@@ -96,7 +96,7 @@ struct AirTicketsOptionsView: View {
                                 .frame(width: 12)
                         })
                     })
-
+                    
                     Button(action: {
                         print("Tap | Bottom menu Price chartbutton")
                     }, label: {
@@ -116,33 +116,20 @@ struct AirTicketsOptionsView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 50), style: FillStyle())
                 .modifier(GetHeightModifier(height: $bottomMenuHeight))
             }
-
         }
     }
 }
 
+// MARK: - Preview
 var testAirTicketsVM = AirTicketsVM.shared
-#Preview("From date") {
-    VStack {
-        AirTicketsOptionsView()
-            .environmentObject(AppCoordinator())
-            .environmentObject(AirTicketsVM.shared)
-            .onAppear {
-                testAirTicketsVM.from = "МоскваТест"
-                testAirTicketsVM.to = "Санкт-ПетербургТест"
-                testAirTicketsVM.thereDate = Date.now
-            }
-    }.background(Color.black)
-}
-
 #Preview("From and to dates") {
     VStack {
         AirTicketsOptionsView()
             .environmentObject(AppCoordinator())
             .environmentObject(AirTicketsVM.shared)
             .onAppear {
-                testAirTicketsVM.from = "МоскваТест"
-                testAirTicketsVM.to = "Санкт-ПетербургТест"
+                testAirTicketsVM.fromCity = "МоскваТест"
+                testAirTicketsVM.toCity = "Санкт-ПетербургТест"
                 testAirTicketsVM.thereDate = Date.now
                 testAirTicketsVM.backDate = Date.now + (60 * 60 * 72)
             }

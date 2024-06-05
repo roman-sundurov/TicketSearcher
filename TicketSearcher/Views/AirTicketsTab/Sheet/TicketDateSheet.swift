@@ -29,7 +29,7 @@ struct TickerDateSheet: View {
     }
 }
 
-
+// MARK: - Preview
 #Preview {
     TickerDateSheet(selectedDate: .constant(Date()), showDatePicker: .constant(true))
 }

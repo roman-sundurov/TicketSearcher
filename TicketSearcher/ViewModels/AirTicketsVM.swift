@@ -18,20 +18,19 @@ class AirTicketsVM: ObservableObject {
     @Published var ticketOffers: [TicketOffer] = []
     @Published var detailedTickets: [DetailedTicket] = []
     @Published var errorMessage: String?
-
-    @AppStorage("from") var from: String = ""
-    @AppStorage("to") var to: String = ""
-
-    // @AppStorage var from: String = ""
-    // @AppStorage var to: String = ""
     @Published var showSearchSheet = false
 
     // AirTicketsFilters
-    @State var backDate: Date = Date.init(timeIntervalSince1970: 0) // Back way
-    @State var showBackDatePicker = false // Back way
+    @Published var backDate: Date = Date.init(timeIntervalSince1970: 0) // Back way
+    @Published var showBackDatePicker = false // Back way
 
-    @State var thereDate: Date = .now // There way
-    @State var showThereDatePicker = false // There way
+    @Published var thereDate: Date = .now // There way
+    @Published var showThereDatePicker = false // There way
+
+    @AppStorage("fromCity")
+    var fromCity: String = ""
+    @AppStorage("toCity")
+    var toCity: String = ""
 
     var networkService = NetworkService.shared
 
@@ -94,7 +93,7 @@ class AirTicketsVM: ObservableObject {
 
 
     func anywhereButton() {
-        to = "Куда угодно"
+        toCity = "Куда угодно"
     }
 
     func getDayMonthWeekdayFormat(date: Date) -> (dayMonth: String, weekday: String) {

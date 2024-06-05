@@ -30,9 +30,9 @@ struct PopularDestinationsView: View {
                     .padding(.leading, 8)
                     .onTapGesture {
                         print("Tap From fromTextField") // Using for avoid dissmis keyboard
-                        viewModel.to = "Стамбул"
-                        if viewModel.from.isEmpty {
-                            viewModel.from = "Москва"
+                        viewModel.toCity = "Стамбул"
+                        if viewModel.fromCity.isEmpty {
+                            viewModel.fromCity = "Москва"
                         }
                         appCoordinator.activeScreen = .airTicketsCountry
                         appCoordinator.activeSheet = nil
@@ -62,9 +62,9 @@ struct PopularDestinationsView: View {
                     .padding(.leading, 8)
                     .onTapGesture {
                         print("Tap From fromTextField") // Using for avoid dissmis keyboard
-                        viewModel.to = "Сочи"
-                        if viewModel.from.isEmpty {
-                            viewModel.from = "Москва"
+                        viewModel.toCity = "Сочи"
+                        if viewModel.fromCity.isEmpty {
+                            viewModel.fromCity = "Москва"
                         }
                         appCoordinator.activeScreen = .airTicketsCountry
                         appCoordinator.activeSheet = nil
@@ -94,9 +94,9 @@ struct PopularDestinationsView: View {
                     .padding(.leading, 8)
                     .onTapGesture {
                         print("Tap From fromTextField") // Using for avoid dissmis keyboard
-                        viewModel.to = "Пхукет"
-                        if viewModel.from.isEmpty {
-                            viewModel.from = "Москва"
+                        viewModel.toCity = "Пхукет"
+                        if viewModel.fromCity.isEmpty {
+                            viewModel.fromCity = "Москва"
                         }
                         appCoordinator.activeScreen = .airTicketsCountry
                         appCoordinator.activeSheet = nil
@@ -117,6 +117,7 @@ struct PopularDestinationsView: View {
     }
 }
 
+// MARK: - Preview
 #Preview {
     PopularDestinationsView()
 }

@@ -59,6 +59,7 @@ struct RoutOptionsView: View {
     }
 }
 
+// MARK: - Preview
 #Preview {
     RoutOptionsView(viewModel: AirTicketsVM())
 }

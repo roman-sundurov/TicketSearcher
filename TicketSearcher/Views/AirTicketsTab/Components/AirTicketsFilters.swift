@@ -9,13 +9,14 @@ import SwiftUI
 
 struct AirTicketsFilters: View {
     @EnvironmentObject var viewModel: AirTicketsVM
-    // // Back way
-    @State var backDate: Date = Date.init(timeIntervalSince1970: 0)
-    @State var showBackDatePicker = false
-    // 
-    // // There way
-    @State var thereDate: Date = .now
-    @State var showThereDatePicker = false
+
+    // Back way
+    @Binding var backDate: Date// = Date.init(timeIntervalSince1970: 0)
+    @Binding var showBackDatePicker: Bool// = false
+
+    // There way
+    @Binding var thereDate: Date
+    @Binding var showThereDatePicker: Bool// = false
 
     var thereDateText: (dayMonth: String, weekday: String) {
         viewModel.getDayMonthWeekdayFormat(date: thereDate)
@@ -32,6 +33,26 @@ struct AirTicketsFilters: View {
     var body: some View {
         ScrollView(.horizontal) {
             HStack {
+                // There way
+                filterItem(
+                    icon: nil,
+                    view: {
+                        HStack(spacing: 0) {
+                            Text(thereDateText.dayMonth)
+                                .fontTitle4()
+                                .foregroundStyle(Color.tsWhite)
+                            if !thereDateText.weekday.isEmpty {
+                                Text(", \(thereDateText.weekday)")
+                                    .fontTitle4()
+                                    .foregroundStyle(Color.tsGrey6)
+                            }
+                        }
+                    }()
+                )
+                .onTapGesture {
+                    showThereDatePicker = true
+                }
+
                 // Back way
                 filterItem(
                     icon: backDateText == nil ? AssetImage.returnTicketFilterIcon.image : nil,
@@ -59,26 +80,6 @@ struct AirTicketsFilters: View {
                         backDate = Date.now
                     }
                     showBackDatePicker = true
-                }
-
-                // There way
-                filterItem(
-                    icon: nil,
-                    view: {
-                        HStack(spacing: 0) {
-                            Text(thereDateText.dayMonth)
-                                .fontTitle4()
-                                .foregroundStyle(Color.tsWhite)
-                            if !thereDateText.weekday.isEmpty {
-                                Text(", \(thereDateText.weekday)")
-                                    .fontTitle4()
-                                    .foregroundStyle(Color.tsGrey6)
-                            }
-                        }
-                    }()
-                )
-                .onTapGesture {
-                    showThereDatePicker = true
                 }
 
                 filterItem(
@@ -124,9 +125,9 @@ struct AirTicketsFilters: View {
         .background(Color.tsGrey3)
         .clipShape(RoundedRectangle(cornerRadius: 16), style: FillStyle())
     }
-
 }
 
-#Preview {
-    AirTicketsFilters()
-}
+// MARK: - Preview
+// #Preview {
+//     AirTicketsFilters()
+// }

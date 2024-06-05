@@ -9,11 +9,7 @@ import Foundation
 
 class ProfileVM: ObservableObject {
     // TODO: - Add stored data model
-    // @Published var profileData: [CountryOffers] = []
 
     init() {
-        // TODO: - Add fetchData function
     }
-
-    // TODO: - Add fetchData function
 }

@@ -30,58 +30,58 @@ struct AirTicketsCountryView: View {
                 VStack {
                     // MARK: - From block
                     HStack {
-                        TextField("", text: $viewModel.from)
-                            .placeholder(when: viewModel.from.isEmpty) {
+                        TextField("", text: $viewModel.fromCity)
+                            .placeholder(when: viewModel.fromCity.isEmpty) {
                                 Text("Откуда - Москва").foregroundColor(.gray)
                             }
                             .foregroundStyle(Color.white)
-                            .onChange(of: viewModel.from) { _, newText in
+                            .onChange(of: viewModel.fromCity) { _, newText in
                                 let filtered = newText.filter { $0.isCyrillic }
                                 if filtered != newText {
-                                    viewModel.from = filtered
+                                    viewModel.fromCity = filtered
                                 }
                             }
                             .onTapGesture {
                                 print("Tap From fromTextField") // Using for avoid dissmis keyboard
                             }
-                        
+
                         AssetImage.swapPlaces.image
                             .frame(width: 12, height: 12)
                             .onTapGesture {
-                                let temp = viewModel.from
-                                viewModel.from = viewModel.to
-                                viewModel.to = temp
+                                let temp = viewModel.fromCity
+                                viewModel.fromCity = viewModel.toCity
+                                viewModel.toCity = temp
                             }
                     }
-                    
-                    
+
+
                     Divider()
                         .background(Color.tsGrey6)
                         .frame(height: 1)
-                    
+
                     // MARK: - To block
                     HStack {
-                        TextField("", text: $viewModel.to)
-                            .placeholder(when: viewModel.to.isEmpty) {
+                        TextField("", text: $viewModel.toCity)
+                            .placeholder(when: viewModel.toCity.isEmpty) {
                                 Text("Куда - Турция").foregroundColor(.gray)
                             }
                             .foregroundStyle(Color.white)
-                            .onChange(of: viewModel.to) { oldText, newText in
+                            .onChange(of: viewModel.toCity) { _, newText in
                                 let filtered = newText.filter { $0.isCyrillic }
                                 if filtered != newText {
-                                    self.viewModel.to = filtered
+                                    self.viewModel.toCity = filtered
                                 }
                             }
                             .onTapGesture {
                                 print("Tap From toTextField") // Using for avoid dissmis keyboard
                                 viewModel.showSearchSheet = true
                             }
-                        
-                        if !viewModel.to.isEmpty {
+
+                        if !viewModel.toCity.isEmpty {
                             AssetImage.removeTextButton.image
                                 .frame(width: 9, height: 9)
                                 .onTapGesture {
-                                    viewModel.to = ""
+                                    viewModel.toCity = ""
                                 }
                         }
                     }
@@ -94,11 +94,16 @@ struct AirTicketsCountryView: View {
             )
             .clipShape(RoundedRectangle(cornerRadius: 16), style: FillStyle())
             .padding(.top, 47)
-            
-            AirTicketsFilters()
-                .scrollIndicators(.hidden)
-                .padding(.top, 15)
-            
+
+            AirTicketsFilters(
+                backDate: $viewModel.backDate,
+                showBackDatePicker: $viewModel.showBackDatePicker,
+                thereDate: $viewModel.thereDate,
+                showThereDatePicker: $viewModel.showThereDatePicker
+            )
+            .scrollIndicators(.hidden)
+            .padding(.top, 15)
+
             VStack {
                 VStack {
                     HStack {

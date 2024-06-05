@@ -9,11 +9,7 @@ import Foundation
 
 class ShorterVM: ObservableObject {
     // TODO: - Add stored data model
-    // @Published var shorterData: [CountryOffers] = []
 
     init() {
-        // TODO: - Add fetchData function
     }
-
-    // TODO: - Add fetchData function
 }

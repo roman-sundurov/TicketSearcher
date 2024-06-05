@@ -9,7 +9,6 @@ import SwiftUI
 
 struct RecommendedTicketView: View {
     @EnvironmentObject var appCoordinator: AppCoordinator
-    // @EnvironmentObject var viewModel: AirTicketsVM
 
     var ticketOffer: TicketOffer
     var index: Int?
