@@ -33,7 +33,7 @@ enum AssetImage: String {
     case offer2 = "Offer2"
     case offer3 = "Offer3"
     case removeTextButton = "RemoveTextButton"
-    case airTicketCountryBackButton = "AirTicketCountryBackButton"
+    case airTicketsCountryBackButton = "AirTicketsCountryBackButton"
     case swapPlaces = "SwapPlaces"
     case returnTicketFilterIcon = "ReturnTicketFilterIcon"
     case passengersFilterIcon = "PassengersFilterIcon"
@@ -56,6 +56,12 @@ enum AssetImage: String {
     case ticketBlueMarket = "TicketBlueMarket"
     case ticketWhiteMarket = "TicketWhiteMarket"
 
+    // AirTicketsOptionsView
+    case airTicketsOptionsBackButton = "AirTicketsOptionsBackButton"
+    case airTicketsOptionsChartButton = "AirTicketsOptionsChartButton"
+    case priceNotification = "PriceNotification"
+
+    // MARK: - Properties
     var image: Image {
         return Image(self.rawValue)
     }

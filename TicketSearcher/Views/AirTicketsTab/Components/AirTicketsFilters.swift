@@ -9,11 +9,11 @@ import SwiftUI
 
 struct AirTicketsFilters: View {
     @EnvironmentObject var viewModel: AirTicketsVM
-    // Back way
+    // // Back way
     @State var backDate: Date = Date.init(timeIntervalSince1970: 0)
     @State var showBackDatePicker = false
-
-    // There way
+    // 
+    // // There way
     @State var thereDate: Date = .now
     @State var showThereDatePicker = false
 
@@ -55,7 +55,9 @@ struct AirTicketsFilters: View {
                     }()
                 )
                 .onTapGesture {
-                    backDate = Date.now
+                    if backDate.timeIntervalSince1970 == 0 {
+                        backDate = Date.now
+                    }
                     showBackDatePicker = true
                 }
 

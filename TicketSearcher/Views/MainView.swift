@@ -9,14 +9,18 @@ import SwiftUI
 
 struct MainView: View {
     @EnvironmentObject var appCoordinator: AppCoordinator
+    @State var tabBarHeight: CGFloat = 0
 
     var body: some View {
         ZStack {
             appCoordinator.rootView
+                .padding(.bottom, tabBarHeight)
+                .ignoresSafeArea([.container, .keyboard], edges: .bottom)
 
             VStack {
                 Spacer()
 
+// I leave it in the code to show the process of debugging
 #if DEBUG
                 // Button(action: {
                 //     appCoordinator.activeScreen = .airTicketsCountry
@@ -24,8 +28,10 @@ struct MainView: View {
                 //     Text("Test airTicketsCountry")
                 // })
 #endif
-
-                TabBarView(viewModel: TabBarVM(activeScreen: appCoordinator.activeScreen))
+                TabBarView(
+                    height: $tabBarHeight,
+                    viewModel: TabBarVM(activeScreen: appCoordinator.activeScreen)
+                )
             }
             .ignoresSafeArea([.container, .keyboard], edges: .bottom)
         }
@@ -35,6 +41,7 @@ struct MainView: View {
     }
 }
 
+// MARK: - Preview
 #Preview {
     MainView()
         .environmentObject(AppCoordinator())

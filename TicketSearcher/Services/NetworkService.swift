@@ -46,4 +46,22 @@ class NetworkService {
                 }
             }
     }
+
+    /// Using on the AirTicketDetailView
+    func getFlightDetail(completion: @escaping (Result<DetailedTicketResponse, AFError>) -> Void) {
+        let url = "https://run.mocky.io/v3/670c3d56-7f03-4237-9e34-d437a9e56ebf"
+
+        AF.request(url)
+            .validate()
+            .responseDecodable(of: DetailedTicketResponse.self) { response in
+                switch response.result {
+                case .success(let offers):
+                    print("getFlightDetail= \(offers)")
+                    completion(.success(offers))
+                case .failure(let error):
+                    print("error getFlightDetail= \(error.localizedDescription)")
+                    completion(.failure(error))
+                }
+            }
+    }
 }

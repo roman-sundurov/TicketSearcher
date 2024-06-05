@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TabBarView: View {
     @EnvironmentObject var appCoordinator: AppCoordinator
+    @Binding var height: CGFloat
     var viewModel: TabBarVM
 
     var body: some View {
@@ -27,14 +28,18 @@ struct TabBarView: View {
                     }
                 }
             }
-            .padding(.top, 6)
             .padding(.bottom, 45)
+            .padding(.top, 6)
+            .modifier(GetHeightModifier(height: $height))
             .padding(.horizontal, 4)
             .background(Color.tsBlack)
-        // }
     }
 }
 
+// MARK: - Preview
 #Preview {
-    TabBarView(viewModel: TabBarVM(activeScreen: .airTicketsStart))
+    TabBarView(
+        height: .constant(0),
+        viewModel: TabBarVM(activeScreen: .airTicketsStart)
+    )
 }

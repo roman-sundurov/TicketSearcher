@@ -29,14 +29,12 @@ struct RecommendedTicketView: View {
                     Text(ticketOffer.price.value.priceformatNumber() + " ₽")
                         .fontTitle4()
                         .foregroundStyle(Color.tsBlue)
-
                 }
                 HStack {
                     Text(combinedString)
                         .fontText2()
                         .foregroundStyle(Color.tsWhite)
                         .lineLimit(1)
-
                     Spacer()
                 }
             }
@@ -57,6 +55,7 @@ struct RecommendedTicketView: View {
     }
 }
 
+// MARK: - Preview
 var previewTicketOffer = TicketOffer(
     id: 1,
     title: "Test ticket",

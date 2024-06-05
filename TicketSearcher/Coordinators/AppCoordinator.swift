@@ -49,6 +49,12 @@ class AppCoordinator: ObservableObject {
             .environmentObject(viewModel)
     }
 
+    private func airTicketsOptionsView() -> some View {
+        let viewModel = AirTicketsVM.shared
+        return AirTicketsOptionsView()
+            .environmentObject(viewModel)
+    }
+
     // Hotel tab
     private func hotelsView() -> some View {
         let viewModel = HotelsVM()
@@ -93,7 +99,7 @@ class AppCoordinator: ObservableObject {
         case .airTicketsCountry:
             rootView = AnyView(airTicketsCountry())
         case .airTicketsOptions:
-            rootView = AnyView(AirTicketsOptionsView())
+            rootView = AnyView(airTicketsOptionsView())
         case .hotels:
             rootView = AnyView(hotelsView())
         case . shorter:

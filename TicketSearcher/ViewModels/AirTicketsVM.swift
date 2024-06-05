@@ -13,13 +13,22 @@ import SwiftUI
 class AirTicketsVM: ObservableObject {
     static let shared = AirTicketsVM()
 
+    // API requests' data
     @Published var countryOffers: [CountryOffers] = []
-    @Published var ticketOffer: [TicketOffer] = []
+    @Published var ticketOffers: [TicketOffer] = []
+    @Published var detailedTickets: [DetailedTicket] = []
     @Published var errorMessage: String?
 
     @Published var from: String = ""
     @Published var to: String = ""
     @Published var showSearchSheet = false
+
+    // AirTicketsFilters
+    @State var backDate: Date = Date.init(timeIntervalSince1970: 0) // Back way
+    @State var showBackDatePicker = false // Back way
+
+    @State var thereDate: Date = .now // There way
+    @State var showThereDatePicker = false // There way
 
     var networkService = NetworkService.shared
 
@@ -30,6 +39,11 @@ class AirTicketsVM: ObservableObject {
     ]
 
     init() {
+        getOffersData()
+    }
+
+    // MARK: - API requests' handling
+    func getOffersData() {
         networkService.getAirTicketsOffers { [weak self] result in
             switch result {
             case .success(let response):
@@ -44,12 +58,13 @@ class AirTicketsVM: ObservableObject {
         }
     }
 
+
     func getFlightData() {
         networkService.getFlightToCountry { [weak self] result in
             switch result {
             case .success(let response):
                 DispatchQueue.main.async {
-                    self?.ticketOffer = response.ticketsOffers
+                    self?.ticketOffers = response.ticketsOffers
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
@@ -58,6 +73,22 @@ class AirTicketsVM: ObservableObject {
             }
         }
     }
+
+    func getDetailedFlightData() {
+        networkService.getFlightDetail { [weak self] result in
+            switch result {
+            case .success(let response):
+                DispatchQueue.main.async {
+                    self?.detailedTickets = response.detailedTickets
+                }
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    self?.errorMessage = error.localizedDescription
+                }
+            }
+        }
+    }
+
 
     func anywhereButton() {
         to = "Куда угодно"
@@ -69,5 +100,24 @@ class AirTicketsVM: ObservableObject {
         let month = date.formatted(.dateTime.month(.wide).locale(Locale(identifier: "ru_RU")))
         let weekday = date.formatted(.dateTime.weekday(.short).locale(Locale(identifier: "ru_RU")))
         return ("\(day) \(month)", weekday.lowercased())
+    }
+
+    /// dateString should be in the format of "2024-02-23T04:00:00"
+    func getTime1970(dateString: String) -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+
+        if let date = dateFormatter.date(from: dateString) {
+            return date
+        } else {
+            return nil
+        }
+    }
+
+    func getHoursTimeIntervalForFlight(from startDate: Date, to endDate: Date) -> String {
+        let interval = endDate.timeIntervalSince(startDate)
+        let hours = interval / 3600.0
+        let formattedString = String(format: "%.1f", hours)
+        return formattedString
     }
 }

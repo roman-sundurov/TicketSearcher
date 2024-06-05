@@ -11,17 +11,22 @@ struct AirTicketsCountryView: View {
     @EnvironmentObject var appCoordinator: AppCoordinator
     @EnvironmentObject var viewModel: AirTicketsVM
 
+    @State var priceNotificationToggle = false
+
     var maxOfferObjects: Int {
-        return viewModel.ticketOffer.count >= 3 ? 3 : viewModel.ticketOffer.count
+        return viewModel.ticketOffers.count >= 3 ? 3 : viewModel.ticketOffers.count
     }
 
     var body: some View {
         VStack {
             HStack {
-                AssetImage.airTicketCountryBackButton.image
+                AssetImage.airTicketsCountryBackButton.image
                     .frame(width: 24, height: 24)
                     .padding(.horizontal, 8)
-                
+                    .onTapGesture {
+                        appCoordinator.activeScreen = .airTicketsStart
+                    }
+
                 VStack {
                     // MARK: - From block
                     HStack {
@@ -30,7 +35,7 @@ struct AirTicketsCountryView: View {
                                 Text("Откуда - Москва").foregroundColor(.gray)
                             }
                             .foregroundStyle(Color.white)
-                            .onChange(of: viewModel.from) { oldText, newText in
+                            .onChange(of: viewModel.from) { _, newText in
                                 let filtered = newText.filter { $0.isCyrillic }
                                 if filtered != newText {
                                     viewModel.from = filtered
@@ -107,7 +112,7 @@ struct AirTicketsCountryView: View {
                     ForEach(0..<maxOfferObjects, id: \.self) { index in
                         VStack {
                             RecommendedTicketView(
-                                ticketOffer: viewModel.ticketOffer[index],
+                                ticketOffer: viewModel.ticketOffers[index],
                                 index: index
                             )
                             .padding(.top, 8)
@@ -147,6 +152,28 @@ struct AirTicketsCountryView: View {
             .clipShape(RoundedRectangle(cornerRadius: 8), style: FillStyle())
             .padding(.top, 18)
 
+            Button(action: {
+                priceNotificationToggle.toggle()
+            }, label: {
+                HStack {
+                    AssetImage.priceNotification.image
+                        .frame(width: 24, height: 24)
+                    Text("Подписка на цену")
+                        .fontButtonText1()
+                        .foregroundStyle(Color.white)
+                        .padding(.vertical, 10)
+                    Spacer()
+                    Toggle("", isOn: $priceNotificationToggle)
+                }
+            })
+            .background(
+                Color.tsGrey3
+            )
+            .buttonStyle(BorderedButtonStyle())
+            .background(Color.blue)
+            .clipShape(RoundedRectangle(cornerRadius: 8), style: FillStyle())
+            .padding(.top, 18)
+
             Spacer()
         }
         .padding(.horizontal, 16)
@@ -157,6 +184,7 @@ struct AirTicketsCountryView: View {
     }
 }
 
+// MARK: - Preview
 #Preview {
     AirTicketsCountryView()
         .environmentObject(AppCoordinator())
