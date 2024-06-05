@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ProfileView: View {
     @EnvironmentObject var appCoordinator: AppCoordinator
-    @StateObject var viewModel: ProfileVM
+    @EnvironmentObject var viewModel: AirTicketsVM
 
     var body: some View {
         Text("Страница \"Профиль\"")
@@ -17,5 +17,5 @@ struct ProfileView: View {
 }
 
 #Preview {
-    ProfileView(viewModel: ProfileVM())
+    ProfileView()
 }

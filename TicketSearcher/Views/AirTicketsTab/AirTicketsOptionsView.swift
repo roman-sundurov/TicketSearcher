@@ -1,13 +1,13 @@
 //
-//  AirTickets2CountrySheet.swift
+//  AirTicketsOptionsView.swift
 //  TicketSearcher
 //
-//  Created by Roman on 3/6/24.
+//  Created by Roman on 5/6/24.
 //
 
 import SwiftUI
 
-struct AirTickets2CountrySheet: View {
+struct AirTicketsOptionsView: View {
     @EnvironmentObject var appCoordinator: AppCoordinator
     @EnvironmentObject var viewModel: AirTicketsVM
 
@@ -17,6 +17,5 @@ struct AirTickets2CountrySheet: View {
 }
 
 #Preview {
-    AirTickets2CountrySheet()
-        .environmentObject(AppCoordinator())
+    AirTicketsOptionsView()
 }

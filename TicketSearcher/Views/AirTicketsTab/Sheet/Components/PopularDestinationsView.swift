@@ -31,7 +31,8 @@ struct PopularDestinationsView: View {
                     .onTapGesture {
                         print("Tap From fromTextField") // Using for avoid dissmis keyboard
                         viewModel.to = "Стамбул"
-                        appCoordinator.activeSheet = .airTickets2Country
+                        appCoordinator.activeScreen = .airTicketsCountry
+                        appCoordinator.activeSheet = nil
                     }
 
                     Spacer(minLength: 0)
@@ -59,7 +60,8 @@ struct PopularDestinationsView: View {
                     .onTapGesture {
                         print("Tap From fromTextField") // Using for avoid dissmis keyboard
                         viewModel.to = "Сочи"
-                        appCoordinator.activeSheet = .airTickets2Country
+                        appCoordinator.activeScreen = .airTicketsCountry
+                        appCoordinator.activeSheet = nil
                     }
 
                     Spacer(minLength: 0)
@@ -87,7 +89,8 @@ struct PopularDestinationsView: View {
                     .onTapGesture {
                         print("Tap From fromTextField") // Using for avoid dissmis keyboard
                         viewModel.to = "Пхукет"
-                        appCoordinator.activeSheet = .airTickets2Country
+                        appCoordinator.activeScreen = .airTicketsCountry
+                        appCoordinator.activeSheet = nil
                     }
 
                     Spacer(minLength: 0)

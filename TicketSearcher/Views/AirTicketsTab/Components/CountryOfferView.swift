@@ -1,5 +1,5 @@
 //
-//  OfferView.swift
+//  CountryOfferView.swift
 //  TicketSearcher
 //
 //  Created by Roman on 2/6/24.
@@ -7,13 +7,12 @@
 
 import SwiftUI
 
-struct OfferView: View {
-    var offer: Offer
+struct CountryOfferView: View {
+    var offer: CountryOffers
     var offerImages: [Int: Image]
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-
             if let image = offerImages[offer.id] {
                 image
                     .resizable()
@@ -44,7 +43,7 @@ struct OfferView: View {
     }
 }
 
-var testOffer = Offer(
+var testOffer = CountryOffers(
     id: 1,
     title: "Test title",
     town: "Test town",
@@ -55,7 +54,7 @@ var airTicketsVM = AirTicketsVM()
 
 #Preview {
     VStack {
-        OfferView(offer: testOffer, offerImages: airTicketsVM.offerImages)
+        CountryOfferView(offer: testOffer, offerImages: airTicketsVM.offerImages)
     }
     .background(Color.tsBlack)
 }

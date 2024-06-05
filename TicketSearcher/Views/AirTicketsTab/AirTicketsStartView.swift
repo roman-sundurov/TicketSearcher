@@ -7,10 +7,9 @@
 
 import SwiftUI
 
-struct AirTicketsView: View {
+struct AirTicketsStartView: View {
     @EnvironmentObject var appCoordinator: AppCoordinator
     @EnvironmentObject var viewModel: AirTicketsVM
-    // @StateObject var viewModel: AirTicketsVM
 
     var body: some View {
             VStack {
@@ -63,7 +62,7 @@ struct AirTicketsView: View {
                                 // MARK: - To block
                                 HStack {
                                     // I commented on the TextFiled and used the Text below because the technical task says the modal window should open after the user taps the destination field.
-                                
+
                                     // TextField("", text: $to)
                                     //     .placeholder(when: to.isEmpty) {
                                     //         Text("Куда - Турция").foregroundColor(.gray)
@@ -79,7 +78,7 @@ struct AirTicketsView: View {
                                     //         print("Tap From toTextField") // Using for avoid dissmis keyboard
                                     //         showSearchSheet = true
                                     //     }
-                                
+
                                     Text(viewModel.to)
                                         .placeholder(when: viewModel.to.isEmpty) {
                                             Text("Куда - Турция").foregroundColor(.gray)
@@ -89,11 +88,11 @@ struct AirTicketsView: View {
                                             print("Tap From toTextField") // Using for avoid dissmis keyboard
                                             UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                                             // viewModel.showSearchSheet = true
-                                            appCoordinator.activeSheet = .airTickets1Search
+                                            appCoordinator.activeSheet = .airTicketsSearch
                                         }
 
                                     Spacer(minLength: 0)
-                                
+
                                     if !viewModel.to.isEmpty {
                                         AssetImage.removeTextButton.image
                                             .frame(width: 9, height: 9)
@@ -127,15 +126,25 @@ struct AirTicketsView: View {
 
                     ScrollView(.horizontal) {
                         HStack(spacing: 20) {
-                            ForEach(viewModel.offers, id: \.self) { offer in
-                                OfferView(offer: offer, offerImages: viewModel.offerImages)
+                            ForEach(viewModel.countryOffers, id: \.self) { offer in
+                                CountryOfferView(offer: offer, offerImages: viewModel.offerImages)
                             }
                         }
+                        .padding(.horizontal, 16)
                     }
                     .scrollIndicators(.visible)
                     .padding(.top, 26)
 
-                    Spacer()
+// #if DEBUG
+//                 Button(action: {
+//                     var network = NetworkService.shared
+//                     network.getFlightToCountry {_ in
+//                         print("getFlightToCountry finish")
+//                     }
+//                 }, label: {
+//                     Text("Test getFlightToCountry")
+//                 })
+// #endif
                 }
             }
             .background(
@@ -145,7 +154,7 @@ struct AirTicketsView: View {
             .onTapGesture {
                 UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
             }
-        // }
+
     }
 }
 
@@ -154,14 +163,15 @@ extension View {
         when shouldShow: Bool,
         alignment: Alignment = .leading,
         @ViewBuilder placeholder: () -> Content) -> some View {
-
-        ZStack(alignment: alignment) {
-            placeholder().opacity(shouldShow ? 1 : 0)
-            self
+            ZStack(alignment: alignment) {
+                placeholder().opacity(shouldShow ? 1 : 0)
+                self
+            }
         }
-    }
 }
 
 #Preview {
-    AirTicketsView()
+    AirTicketsStartView()
+        .environmentObject(AppCoordinator())
+        .environmentObject(AirTicketsVM.shared)
 }

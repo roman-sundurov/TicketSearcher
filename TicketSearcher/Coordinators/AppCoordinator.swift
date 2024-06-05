@@ -11,6 +11,7 @@ import SwiftUI
 class AppCoordinator: ObservableObject {
     @Published var rootView: AnyView?
     @Published var rootSheet: AnyView?
+    @Published var showSheet = false
 
     @Published var activeScreen: Screen {
         didSet {
@@ -29,58 +30,70 @@ class AppCoordinator: ObservableObject {
         }
     }
 
-    @Published var showSheet = false
-
     init() {
-        activeScreen = .airTickets
-        push(screen: .airTickets)
+        activeScreen = .airTicketsStart
+        push(screen: .airTicketsStart)
     }
 
     // MARK: Tab Screens
+    // AirTickets tab
     private func airTickesView() -> some View {
         let viewModel = AirTicketsVM.shared
-        return AirTicketsView()
+        return AirTicketsStartView()
             .environmentObject(viewModel)
     }
-    
+
+    private func airTicketsCountry() -> some View {
+        let viewModel = AirTicketsVM.shared
+        return AirTicketsCountryView()
+            .environmentObject(viewModel)
+    }
+
+    // Hotel tab
     private func hotelsView() -> some View {
         let viewModel = HotelsVM()
-        return HotelsView(viewModel: viewModel)
+        return HotelsView()
+            .environmentObject(viewModel)
     }
 
+    // Shorter tab
     private func shorterView() -> some View {
         let viewModel = ShorterVM()
-        return ShorterView(viewModel: viewModel)
+        return ShorterView()
+            .environmentObject(viewModel)
     }
 
+    // Notification tab
     private func norificationsView() -> some View {
         let viewModel = NotificationsVM()
-        return NotificationsView(viewModel: viewModel)
+        return NotificationsView()
+            .environmentObject(viewModel)
     }
 
+    // Profile tab
     private func profileView() -> some View {
         let viewModel = ProfileVM()
-        return ProfileView(viewModel: viewModel)
+        return ProfileView()
+            .environmentObject(viewModel)
     }
 
     // MARK: Sheets
+    // AirTickets tab
     private func airTickets1SearchSheet() -> some View {
         let viewModel = AirTicketsVM.shared
         return AirTickets1SearchSheet()
             .environmentObject(viewModel)
     }
 
-    private func airTickets2CountrySheet() -> some View {
-        let viewModel = AirTicketsVM.shared
-        return AirTickets2CountrySheet()
-            .environmentObject(viewModel)
-    }
-
     // MARK: - Controlls
     private func push(screen: Screen) {
         switch screen {
-        case .airTickets:
+        case .airTicketsStart:
             rootView = AnyView(airTickesView())
+        case .airTicketsCountry:
+            rootView = AnyView(airTicketsCountry())
+        case .airTicketsOptions:
+            rootView = AnyView(AirTicketsOptionsView())
         case .hotels:
             rootView = AnyView(hotelsView())
         case . shorter:
@@ -94,12 +107,8 @@ class AppCoordinator: ObservableObject {
 
     private func push(sheet: Sheet) {
         switch sheet {
-        case .airTickets1Search:
+        case .airTicketsSearch:
             rootSheet = AnyView(airTickets1SearchSheet())
-        case .airTickets2Country:
-            rootSheet = AnyView(airTickets2CountrySheet())
-        case . airTickets2Options:
-            rootSheet = AnyView(airTickets2CountrySheet())
         }
     }
 }

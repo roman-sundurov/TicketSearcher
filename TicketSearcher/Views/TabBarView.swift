@@ -19,7 +19,7 @@ struct TabBarView: View {
                             .frame(width: 24, height: 24)
                         Text(button.text)
                             .fontTabText()
-                            .foregroundStyle(viewModel.activeScreen == button.screen ? Color.blue : Color.tsGrey6)
+                            .foregroundStyle(viewModel.screenTabBarMatch(screen: viewModel.activeScreen) == button.screen ? Color.blue : Color.tsGrey6)
                     }
                     .frame(maxWidth: .infinity)
                     .onTapGesture {
@@ -36,5 +36,5 @@ struct TabBarView: View {
 }
 
 #Preview {
-    TabBarView(viewModel: TabBarVM(activeScreen: .airTickets))
+    TabBarView(viewModel: TabBarVM(activeScreen: .airTicketsStart))
 }

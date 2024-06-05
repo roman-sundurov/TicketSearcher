@@ -13,8 +13,18 @@ struct MainView: View {
     var body: some View {
         ZStack {
             appCoordinator.rootView
+
             VStack {
                 Spacer()
+
+#if DEBUG
+                // Button(action: {
+                //     appCoordinator.activeScreen = .airTicketsCountry
+                // }, label: {
+                //     Text("Test airTicketsCountry")
+                // })
+#endif
+
                 TabBarView(viewModel: TabBarVM(activeScreen: appCoordinator.activeScreen))
             }
             .ignoresSafeArea([.container, .keyboard], edges: .bottom)

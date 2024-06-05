@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 class TabBarVM: ObservableObject {
-    @Published var activeScreen: Screen
+    var activeScreen: Screen
     var buttonsDetails: [TabBarButtonDetails] = []
 
     init(activeScreen: Screen) {
@@ -17,29 +17,39 @@ class TabBarVM: ObservableObject {
         self.buttonsDetails = [
             TabBarButtonDetails(
                 text: "Авиабилеты",
-                iconName: activeScreen == .airTickets ? AssetImage.airTicketsTabBarActive.rawValue : AssetImage.airTicketsTabBarNotActive.rawValue,
-                screen: .airTickets
+                iconName: screenTabBarMatch(screen: activeScreen) == .airTicketsStart ? AssetImage.airTicketsTabBarActive.rawValue : AssetImage.airTicketsTabBarNotActive.rawValue,
+                screen: .airTicketsStart
             ),
             TabBarButtonDetails(
                 text: "Отели",
-                iconName: activeScreen == .hotels ? AssetImage.hotelTabBarActive.rawValue : AssetImage.hotelTabBarNotActive.rawValue,
+                iconName: screenTabBarMatch(screen: activeScreen) == .hotels ? AssetImage.hotelTabBarActive.rawValue : AssetImage.hotelTabBarNotActive.rawValue,
                 screen: .hotels
             ),
             TabBarButtonDetails(
                 text: "Короче",
-                iconName: activeScreen == .shorter ? AssetImage.shorterTabBarActive.rawValue : AssetImage.shorterTabBarNotActive.rawValue,
+                iconName: screenTabBarMatch(screen: activeScreen) == .shorter ? AssetImage.shorterTabBarActive.rawValue : AssetImage.shorterTabBarNotActive.rawValue,
                 screen: .shorter
             ),
             TabBarButtonDetails(
                 text: "Подписки",
-                iconName: activeScreen == .notifications ? AssetImage.notificationsTabBarActive.rawValue : AssetImage.notificationsTabBarNotActive.rawValue,
+                iconName: screenTabBarMatch(screen: activeScreen) == .notifications ? AssetImage.notificationsTabBarActive.rawValue : AssetImage.notificationsTabBarNotActive.rawValue,
                 screen: .notifications
             ),
             TabBarButtonDetails(
                 text: "Профили",
-                iconName: activeScreen == .profile ? AssetImage.profileTabBarActive.rawValue : AssetImage.profileTabBarNotActive.rawValue,
+                iconName: screenTabBarMatch(screen: activeScreen) == .profile ? AssetImage.profileTabBarActive.rawValue : AssetImage.profileTabBarNotActive.rawValue,
                 screen: .profile
             )
         ]
+    }
+
+    /// Returns the associated active TabBar Screen
+    func screenTabBarMatch(screen: Screen) -> Screen {
+        switch screen {
+        case Screen.airTicketsCountry, Screen.airTicketsOptions:
+            return Screen.airTicketsStart
+        default:
+            return screen
+        }
     }
 }

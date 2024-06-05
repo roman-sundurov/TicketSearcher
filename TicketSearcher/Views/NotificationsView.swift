@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NotificationsView: View {
     @EnvironmentObject var appCoordinator: AppCoordinator
-    @StateObject var viewModel: NotificationsVM
+    @EnvironmentObject var viewModel: AirTicketsVM
 
     var body: some View {
         Text("Страница \"Подписки\"")
@@ -17,5 +17,5 @@ struct NotificationsView: View {
 }
 
 #Preview {
-    NotificationsView(viewModel: NotificationsVM())
+    NotificationsView()
 }

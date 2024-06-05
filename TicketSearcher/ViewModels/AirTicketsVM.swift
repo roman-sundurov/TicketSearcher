@@ -9,10 +9,12 @@ import Foundation
 import Alamofire
 import SwiftUI
 
+/// ViewModel using in the AirTicketsStartView screen and the AirTicketsCountryViewa
 class AirTicketsVM: ObservableObject {
-    static var shared = AirTicketsVM()
+    static let shared = AirTicketsVM()
 
-    @Published var offers: [Offer] = []
+    @Published var countryOffers: [CountryOffers] = []
+    @Published var ticketOffer: [TicketOffer] = []
     @Published var errorMessage: String?
 
     @Published var from: String = ""
@@ -32,18 +34,40 @@ class AirTicketsVM: ObservableObject {
             switch result {
             case .success(let response):
                 DispatchQueue.main.async {
-                    self?.offers = response.offers
+                    self?.countryOffers = response.offers
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
                     self?.errorMessage = error.localizedDescription
                 }
             }
+        }
+    }
 
+    func getFlightData() {
+        networkService.getFlightToCountry { [weak self] result in
+            switch result {
+            case .success(let response):
+                DispatchQueue.main.async {
+                    self?.ticketOffer = response.ticketsOffers
+                }
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    self?.errorMessage = error.localizedDescription
+                }
+            }
         }
     }
 
     func anywhereButton() {
         to = "Куда угодно"
+    }
+
+    func getDayMonthWeekdayFormat(date: Date) -> (dayMonth: String, weekday: String) {
+        let components = Calendar.current.dateComponents([.day, .month, .weekday], from: date)
+        let day = components.day ?? 0
+        let month = date.formatted(.dateTime.month(.wide).locale(Locale(identifier: "ru_RU")))
+        let weekday = date.formatted(.dateTime.weekday(.short).locale(Locale(identifier: "ru_RU")))
+        return ("\(day) \(month)", weekday.lowercased())
     }
 }

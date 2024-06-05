@@ -34,7 +34,7 @@ public extension Text {
     }
 
     func fontButtonText1() -> some View {
-        self.font(FontHelper.customFont(size: 16, weight: .regular))
+        self.font(FontHelper.customFont(size: 16, weight: .semibold))
     }
 
     func fontTabText() -> some View {

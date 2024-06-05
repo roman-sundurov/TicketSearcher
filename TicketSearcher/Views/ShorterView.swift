@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ShorterView: View {
     @EnvironmentObject var appCoordinator: AppCoordinator
-    @StateObject var viewModel: ShorterVM
+    @EnvironmentObject var viewModel: AirTicketsVM
 
     var body: some View {
         Text("Страница \"Короче\"")
@@ -17,5 +17,5 @@ struct ShorterView: View {
 }
 
 #Preview {
-    ShorterView(viewModel: ShorterVM())
+    ShorterView()
 }

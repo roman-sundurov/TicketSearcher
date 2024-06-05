@@ -26,12 +26,18 @@ enum AssetImage: String {
     case shorterTabBarNotActive = "ShorterTabBarNotActive"
 
     // MARK: - AirTicketsScreen
+    // AirTicketsStartView
     case searchIcon = "SearchIcon"
     case offerIcon = "OfferIcon"
     case offer1 = "Offer1"
     case offer2 = "Offer2"
     case offer3 = "Offer3"
     case removeTextButton = "RemoveTextButton"
+    case airTicketCountryBackButton = "AirTicketCountryBackButton"
+    case swapPlaces = "SwapPlaces"
+    case returnTicketFilterIcon = "ReturnTicketFilterIcon"
+    case passengersFilterIcon = "PassengersFilterIcon"
+    case filtersIcon = "FiltersIcon"
 
     // AirTicketsSearchSheet
     case closeSheetIcon = "CloseSheetIcon"
@@ -44,6 +50,11 @@ enum AssetImage: String {
     case destinationIstanbul = "DestinationIstanbul"
     case destinationPhuket = "DestinationPhuket"
     case destinationSochi = "DestinationSochi"
+
+    // AirTicketsCountryView
+    case ticketRedMarket = "TicketRedMarket"
+    case ticketBlueMarket = "TicketBlueMarket"
+    case ticketWhiteMarket = "TicketWhiteMarket"
 
     var image: Image {
         return Image(self.rawValue)
