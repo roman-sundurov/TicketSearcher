@@ -19,8 +19,11 @@ class AirTicketsVM: ObservableObject {
     @Published var detailedTickets: [DetailedTicket] = []
     @Published var errorMessage: String?
 
-    @Published var from: String = ""
-    @Published var to: String = ""
+    @AppStorage("from") var from: String = ""
+    @AppStorage("to") var to: String = ""
+
+    // @AppStorage var from: String = ""
+    // @AppStorage var to: String = ""
     @Published var showSearchSheet = false
 
     // AirTicketsFilters

@@ -6,30 +6,31 @@
 //
 
 import SwiftUI
-import SwiftData
+// import SwiftData | Commented for preparing for implement SwiftData
 
 @main
 struct TicketSearcherApp: App {
     @ObservedObject private var appCoordinator = AppCoordinator()
 
-    var sharedModelContainer: ModelContainer = {
-        let schema = Schema([
-            Item.self,
-        ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-
-        do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
-        } catch {
-            fatalError("Could not create ModelContainer: \(error)")
-        }
-    }()
+    // TODO: - Commented for preparing for implement SwiftData
+    // var sharedModelContainer: ModelContainer = {
+    //     let schema = Schema([
+    //         Item.self,
+    //     ])
+    //     let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+    // 
+    //     do {
+    //         return try ModelContainer(for: schema, configurations: [modelConfiguration])
+    //     } catch {
+    //         fatalError("Could not create ModelContainer: \(error)")
+    //     }
+    // }()
 
     var body: some Scene {
         WindowGroup {
             MainView()
         }
-        .modelContainer(sharedModelContainer)
+        // .modelContainer(sharedModelContainer) Commented for preparing for implement SwiftData
         .environmentObject(appCoordinator)
     }
 }
