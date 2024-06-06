@@ -45,75 +45,83 @@ struct AirTicketDetailView: View {
                         .foregroundStyle(Color.tsWhite)
                     Spacer()
                 }
-                HStack {
-                    AssetImage.ticketRedMarket.image
-                    
-                    HStack(alignment: .top, spacing: 4) {
-                        VStack(spacing: 4) {
-                            Text(departureTime ?? "-")
+                .padding(.bottom, 1)
+
+                HStack(alignment: .top, spacing: 15) {
+                    VStack {
+                        Spacer(minLength: 0)
+                        AssetImage.ticketRedMarket.image
+                        Spacer(minLength: 0)
+                    }
+
+                    VStack(spacing: 4) {
+                        Text(departureTime ?? "-")
+                            .fontTitle4()
+                            .foregroundStyle(Color.tsWhite)
+
+                        HStack {
+                            Text(detailedTicket.departure.airport)
                                 .fontTitle4()
-                                .foregroundStyle(Color.tsWhite)
-                            
-                            HStack {
-                                Text(detailedTicket.departure.airport)
-                                    .fontTitle4()
-                                    .foregroundStyle(Color.tsGrey6)
-                                    .lineLimit(1)
-                            }
+                                .foregroundStyle(Color.tsGrey6)
+                                .lineLimit(1)
                         }
-                        
-                        VStack(spacing: 0) {
-                            Text("-")
+                    }
+
+                    VStack(spacing: 0) {
+                        Text("-")
+                            .fontTitle4()
+                            .foregroundStyle(Color.tsWhite)
+                    }
+
+                    VStack(spacing: 4) {
+                        Text(departureTime ?? "-")
+                            .fontTitle4()
+                            .foregroundStyle(Color.tsWhite)
+
+                        HStack {
+                            Text(detailedTicket.arrival.airport)
                                 .fontTitle4()
-                                .foregroundStyle(Color.tsWhite)
+                                .foregroundStyle(Color.tsGrey6)
+                                .lineLimit(1)
                         }
-                        
-                        VStack(spacing: 4) {
-                            Text(departureTime ?? "-")
-                                .fontTitle4()
-                                .foregroundStyle(Color.tsWhite)
-                            
-                            HStack {
-                                Text(detailedTicket.arrival.airport)
-                                    .fontTitle4()
-                                    .foregroundStyle(Color.tsGrey6)
-                                    .lineLimit(1)
-                            }
-                        }
-                        
+                    }
+
+                    VStack {
                         HStack(spacing: 0) {
                             if let wayTime {
                                 HStack {
                                     Text(wayTime + "ч в пути")
                                         .fontTitle4()
                                         .foregroundStyle(Color.tsWhite)
+                                        .lineLimit(1)
                                 }
                             }
-                            
-                            Text("/")
+
+                            Spacer(minLength: 0)
+
+                            // Text("/")
+                            //     .fontTitle4()
+                            //     .foregroundStyle(Color.tsWhite)
+                            //     .padding(.horizontal, 5)
+                        }
+
+                        HStack {
+                            Text(detailedTicket.hasTransfer ? "С пересадками" : "Без пересадок")
                                 .fontTitle4()
                                 .foregroundStyle(Color.tsWhite)
-                                .padding(.horizontal, 5)
-                            
-                            HStack {
-                                Text(detailedTicket.hasTransfer ? "С пересадками" : "Без пересадок")
-                                    .fontTitle4()
-                                    .foregroundStyle(Color.tsWhite)
-                                    .lineLimit(1)
-                                
-                                Spacer(minLength: 0)
-                            }
-                            
+                                .lineLimit(1)
+
                             Spacer(minLength: 0)
                         }
-                        .padding(.leading, 12)
+
+                        Spacer(minLength: 0)
                     }
+                    .padding(.leading, 12)
                 }
             }
             .padding(16)
             .background(Color.tsGrey3)
             .clipShape(RoundedRectangle(cornerRadius: 8), style: FillStyle())
-            .layoutPriority(1)
             
             if let badge = detailedTicket.badge {
                 VStack {

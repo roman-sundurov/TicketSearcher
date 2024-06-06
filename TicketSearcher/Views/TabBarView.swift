@@ -33,6 +33,12 @@ struct TabBarView: View {
             .modifier(GetHeightModifier(height: $height))
             .padding(.horizontal, 4)
             .background(Color.tsBlack)
+            .overlay(
+                Rectangle()
+                    .frame(height: 1)
+                    .foregroundColor(Color.tsGrey2),
+                alignment: .top
+            )
     }
 }
 

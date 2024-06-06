@@ -35,3 +35,17 @@ extension View {
         }
     }
 }
+
+struct ConditionalPaddingModifier: ViewModifier {
+    var condition: Bool
+    var padding: Edge.Set
+    var value: CGFloat
+
+    func body(content: Content) -> some View {
+        if condition {
+            return AnyView(content.padding(padding, value))
+        } else {
+            return AnyView(content)
+        }
+    }
+}

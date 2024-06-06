@@ -32,7 +32,7 @@ struct CountryOfferView: View {
             HStack(spacing: 0) {
                 AssetImage.offerIcon.image
                     .frame(width: 17, height: 17)
-                Text("от \(offer.price.value.priceformatNumber())")
+                Text("от \(offer.price.value.priceformatNumber()) ₽")
                     .fontText2()
                     .foregroundStyle(Color.tsWhite)
                     .padding(.leading, 4)
