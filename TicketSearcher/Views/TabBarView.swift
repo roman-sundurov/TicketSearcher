@@ -28,6 +28,12 @@ struct TabBarView: View {
                     }
                 }
             }
+            .overlay(
+                Rectangle()
+                    .frame(height: 1)
+                    .foregroundColor(Color.tsGrey2),
+                alignment: .top
+            )
             .padding(.bottom, 45)
             .padding(.top, 6)
             .modifier(GetHeightModifier(height: $height))
