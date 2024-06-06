@@ -27,7 +27,7 @@ struct AirTicketsOptionsView: View {
     
     var body: some View {
         ZStack {
-            VStack {
+            VStack(spacing: 0) {
                 VStack {
                     HStack {
                         AssetImage.airTicketsOptionsBackButton.image
@@ -35,48 +35,62 @@ struct AirTicketsOptionsView: View {
                             .onTapGesture {
                                 appCoordinator.activeScreen = .airTicketsCountry
                             }
-                        
+
                         VStack(alignment: .leading) {
                             Text(viewModel.fromCity + "-" + viewModel.toCity)
                                 .fontTitle3()
                                 .foregroundStyle(Color.tsWhite)
-                            
+
                             HStack(spacing: 0) {
                                 Text(thereDateText.dayMonth)
                                     .fontTitle3()
                                     .foregroundStyle(Color.tsGrey6)
-                                
+
                                 if let backDateText {
                                     Text("-" + backDateText.dayMonth)
                                         .fontTitle3()
                                         .foregroundStyle(Color.tsGrey6)
                                 }
-                                
+
                                 Text(", 1 пассажир")
                                     .fontTitle3()
                                     .foregroundStyle(Color.tsGrey6)
                             }
                         }
                         .padding(.leading, 8)
-                        
+
                         Spacer(minLength: 0)
                     }
                     .padding(.vertical, 8)
                     .padding(.horizontal, 5)
                 }
                 .background(Color.tsGrey3)
+                .overlay(
+                    Rectangle()
+                        .frame(height: 1)
+                        .foregroundColor(Color.tsGrey2),
+                    alignment: .bottom
+                )
                 .padding(.top, 16)
                 
                 ScrollView(.vertical) {
-                    ForEach(viewModel.detailedTickets, id: \.id) { detailedTicket in
-                        AirTicketDetailView(detailedTicket: detailedTicket)
-                            .padding(.top, 10)
+                    ForEach(0..<viewModel.detailedTickets.count, id: \.self) { index in
+                        AirTicketDetailView(detailedTicket: viewModel.detailedTickets[index])
+                            .padding(.vertical, 6)
+                            .modifier(ConditionalPaddingModifier(
+                                condition: index == 0,
+                                padding: .top,
+                                value: 15
+                            ))
+                            .modifier(ConditionalPaddingModifier(
+                                condition: index == viewModel.detailedTickets.count - 1,
+                                padding: .bottom,
+                                value: bottomMenuHeight + 15
+                            ))
                     }
                 }
             }
             .padding(.horizontal, 16)
-            .padding(.bottom, bottomMenuHeight + 15)
-            .background(Color.tsBlack)
             .onAppear {
                 viewModel.getDetailedFlightData()
             }
@@ -116,7 +130,9 @@ struct AirTicketsOptionsView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 50), style: FillStyle())
                 .modifier(GetHeightModifier(height: $bottomMenuHeight))
             }
+            .padding(.bottom, 10)
         }
+        .background(Color.tsBlack)
     }
 }
 

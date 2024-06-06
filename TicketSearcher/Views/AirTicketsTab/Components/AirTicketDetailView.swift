@@ -87,6 +87,7 @@ struct AirTicketDetailView: View {
                                     Text(wayTime + "ч в пути")
                                         .fontTitle4()
                                         .foregroundStyle(Color.tsWhite)
+                                        .lineLimit(1)
                                 }
                             }
                             
@@ -113,7 +114,6 @@ struct AirTicketDetailView: View {
             .padding(16)
             .background(Color.tsGrey3)
             .clipShape(RoundedRectangle(cornerRadius: 8), style: FillStyle())
-            .layoutPriority(1)
             
             if let badge = detailedTicket.badge {
                 VStack {
