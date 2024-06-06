@@ -29,8 +29,9 @@ struct TicketSearcherApp: App {
     var body: some Scene {
         WindowGroup {
             MainView()
+                .environmentObject(appCoordinator)
         }
         // .modelContainer(sharedModelContainer) | Commented for preparing for implement SwiftData
-        .environmentObject(appCoordinator)
+        // .environmentObject(appCoordinator)
     }
 }

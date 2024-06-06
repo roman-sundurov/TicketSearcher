@@ -29,7 +29,7 @@ struct AirTickets1SearchSheet: View {
                             }
                             .foregroundStyle(Color.white)
                             .padding(.leading, 8)
-                            .onChange(of: viewModel.fromCity) { _, newText in
+                            .onChange(of: viewModel.fromCity) { newText in
                                 let filtered = newText.filter { $0.isCyrillic }
                                 if filtered != newText {
                                     viewModel.fromCity = filtered
@@ -64,7 +64,7 @@ struct AirTickets1SearchSheet: View {
                             }
                             .foregroundStyle(Color.white)
                             .padding(.leading, 8)
-                            .onChange(of: viewModel.toCity) { _, newText in
+                            .onChange(of: viewModel.toCity) { newText in
                                 let filtered = newText.filter { $0.isCyrillic }
                                 if filtered != newText {
                                     self.viewModel.toCity = filtered

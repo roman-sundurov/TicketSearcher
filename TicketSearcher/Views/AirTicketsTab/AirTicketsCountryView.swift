@@ -35,7 +35,7 @@ struct AirTicketsCountryView: View {
                                 Text("Откуда - Москва").foregroundColor(.gray)
                             }
                             .foregroundStyle(Color.white)
-                            .onChange(of: viewModel.fromCity) { _, newText in
+                            .onChange(of: viewModel.fromCity) { newText in
                                 let filtered = newText.filter { $0.isCyrillic }
                                 if filtered != newText {
                                     viewModel.fromCity = filtered
@@ -66,7 +66,7 @@ struct AirTicketsCountryView: View {
                                 Text("Куда - Турция").foregroundColor(.gray)
                             }
                             .foregroundStyle(Color.white)
-                            .onChange(of: viewModel.toCity) { _, newText in
+                            .onChange(of: viewModel.toCity) { newText in
                                 let filtered = newText.filter { $0.isCyrillic }
                                 if filtered != newText {
                                     self.viewModel.toCity = filtered
