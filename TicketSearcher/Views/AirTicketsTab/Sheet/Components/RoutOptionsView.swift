@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct RoutOptionsView: View {
-    @ObservedObject var viewModel: AirTicketsVM
+    @EnvironmentObject var appCoordinator: AppCoordinator
+    @EnvironmentObject var viewModel: AirTicketsVM
+    // @ObservedObject var viewModel: AirTicketsVM
 
     var body: some View {
         HStack(alignment: .top) {
@@ -20,7 +22,9 @@ struct RoutOptionsView: View {
             }
             .frame(maxWidth: .infinity)
             .onTapGesture {
-                // TODO: - add stub
+                viewModel.stubViewScreenName = "Сложный маршрут"
+                appCoordinator.activeScreen = .stub
+                appCoordinator.activeSheet = nil
             }
 
             VStack {
@@ -42,7 +46,9 @@ struct RoutOptionsView: View {
             }
             .frame(maxWidth: .infinity)
             .onTapGesture {
-                // TODO: - add stub
+                viewModel.stubViewScreenName = "Выходные"
+                appCoordinator.activeScreen = .stub
+                appCoordinator.activeSheet = nil
             }
 
             VStack {
@@ -53,7 +59,9 @@ struct RoutOptionsView: View {
             }
             .frame(maxWidth: .infinity)
             .onTapGesture {
-                // TODO: - add stub
+                viewModel.stubViewScreenName = "Горячие билеты"
+                appCoordinator.activeScreen = .stub
+                appCoordinator.activeSheet = nil
             }
         }
     }
@@ -61,5 +69,10 @@ struct RoutOptionsView: View {
 
 // MARK: - Preview
 #Preview {
-    RoutOptionsView(viewModel: AirTicketsVM())
+    VStack {
+        RoutOptionsView()
+            .environmentObject(AppCoordinator())
+            .environmentObject(AirTicketsVM.shared)
+    }
+    .background(Color.gray)
 }

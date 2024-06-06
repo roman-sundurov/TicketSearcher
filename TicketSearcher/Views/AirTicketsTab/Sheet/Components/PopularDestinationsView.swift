@@ -120,4 +120,6 @@ struct PopularDestinationsView: View {
 // MARK: - Preview
 #Preview {
     PopularDestinationsView()
+        .environmentObject(AppCoordinator())
+        .environmentObject(AirTicketsVM.shared)
 }

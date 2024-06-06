@@ -90,7 +90,7 @@ struct AirTickets1SearchSheet: View {
                 .clipShape(RoundedRectangle(cornerRadius: 16), style: FillStyle())
                 .padding(.top, 25)
 
-                RoutOptionsView(viewModel: viewModel)
+                RoutOptionsView()
                     .padding(.top, 26)
 
                 PopularDestinationsView()
@@ -105,4 +105,6 @@ struct AirTickets1SearchSheet: View {
 // MARK: - Preview
 #Preview {
     AirTickets1SearchSheet()
+        .environmentObject(AppCoordinator())
+        .environmentObject(AirTicketsVM.shared)
 }

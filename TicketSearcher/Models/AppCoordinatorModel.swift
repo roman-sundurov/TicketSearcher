@@ -12,6 +12,7 @@ enum Screen {
     case airTicketsStart // В Figma называется "Авиабилеты
     case airTicketsCountry
     case airTicketsOptions
+    case stub
     case hotels // В Figma называется "Отели"
     case shorter // В Figma называется "Короче"
     case notifications // В Figma называется "Подписки"

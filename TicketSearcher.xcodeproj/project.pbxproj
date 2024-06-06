@@ -39,6 +39,12 @@
 		4762524B2C110D5000D8D6DD /* NotificationsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47063B102C0A45F100C5BA1E /* NotificationsVM.swift */; };
 		4762524C2C110D5000D8D6DD /* HotelsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47063B0C2C0A452D00C5BA1E /* HotelsVM.swift */; };
 		4762524D2C110D6100D8D6DD /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477338172C0CEA920076AEF9 /* NetworkService.swift */; };
+		476252502C11396C00D8D6DD /* AirTicketsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47063B072C0957FC00C5BA1E /* AirTicketsModel.swift */; };
+		476252512C11396C00D8D6DD /* HotelsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47063B092C09580E00C5BA1E /* HotelsModel.swift */; };
+		476252532C11396C00D8D6DD /* TabBarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47063AFE2C0955E000C5BA1E /* TabBarModel.swift */; };
+		476252602C113A1900D8D6DD /* AppCoordinatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470088D32C0E4737004C98D5 /* AppCoordinatorModel.swift */; };
+		476252612C113A4000D8D6DD /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477338112C0ACCA10076AEF9 /* ImageHelper.swift */; };
+		476252632C113B5100D8D6DD /* StubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476252622C113B5100D8D6DD /* StubView.swift */; };
 		477338102C0AC0B30076AEF9 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4773380F2C0AC0B30076AEF9 /* TabBarView.swift */; };
 		477338122C0ACCA10076AEF9 /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477338112C0ACCA10076AEF9 /* ImageHelper.swift */; };
 		477338142C0ACF3D0076AEF9 /* TabBarVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477338132C0ACF3D0076AEF9 /* TabBarVM.swift */; };
@@ -101,6 +107,7 @@
 		47063B162C0A46F200C5BA1E /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
 		47063B182C0A46FD00C5BA1E /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		476252452C10F4CC00D8D6DD /* VIewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIewHelper.swift; sourceTree = "<group>"; };
+		476252622C113B5100D8D6DD /* StubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubView.swift; sourceTree = "<group>"; };
 		4773380F2C0AC0B30076AEF9 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		477338112C0ACCA10076AEF9 /* ImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
 		477338132C0ACF3D0076AEF9 /* TabBarVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVM.swift; sourceTree = "<group>"; };
@@ -268,6 +275,7 @@
 				478C3C342C0FE26B00B54CD6 /* AirTicketsOptionsView.swift */,
 				470088D72C0E8BB0004C98D5 /* Components */,
 				4773382B2C0D75FA0076AEF9 /* Sheet */,
+				476252622C113B5100D8D6DD /* StubView.swift */,
 			);
 			path = AirTicketsTab;
 			sourceTree = "<group>";
@@ -521,6 +529,7 @@
 				47063AF92C09557900C5BA1E /* AirTicketsStartView.swift in Sources */,
 				47063AF62C094E3000C5BA1E /* FontHelper.swift in Sources */,
 				47063B0F2C0A45C600C5BA1E /* ShorterVM.swift in Sources */,
+				476252632C113B5100D8D6DD /* StubView.swift in Sources */,
 				470088D42C0E4737004C98D5 /* AppCoordinatorModel.swift in Sources */,
 				47063B0D2C0A452D00C5BA1E /* HotelsVM.swift in Sources */,
 				47E1882B2C09271B00F31935 /* TicketSearcherApp.swift in Sources */,
@@ -551,9 +560,14 @@
 			files = (
 				47E1883E2C09271F00F31935 /* TicketSearcherTests.swift in Sources */,
 				476252482C110D5000D8D6DD /* TabBarVM.swift in Sources */,
+				476252602C113A1900D8D6DD /* AppCoordinatorModel.swift in Sources */,
 				4762524D2C110D6100D8D6DD /* NetworkService.swift in Sources */,
 				476252492C110D5000D8D6DD /* ProfileVM.swift in Sources */,
 				4762524A2C110D5000D8D6DD /* ShorterVM.swift in Sources */,
+				476252502C11396C00D8D6DD /* AirTicketsModel.swift in Sources */,
+				476252512C11396C00D8D6DD /* HotelsModel.swift in Sources */,
+				476252612C113A4000D8D6DD /* ImageHelper.swift in Sources */,
+				476252532C11396C00D8D6DD /* TabBarModel.swift in Sources */,
 				4762524B2C110D5000D8D6DD /* NotificationsVM.swift in Sources */,
 				4762524C2C110D5000D8D6DD /* HotelsVM.swift in Sources */,
 				476252472C110D4C00D8D6DD /* AirTicketsVM.swift in Sources */,
@@ -711,6 +725,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = NO;
 				DEVELOPMENT_ASSET_PATHS = "\"TicketSearcher/Preview Content\"";
 				DEVELOPMENT_TEAM = 6VWFU6AND8;
 				ENABLE_PREVIEWS = YES;
@@ -747,6 +762,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = NO;
 				DEVELOPMENT_ASSET_PATHS = "\"TicketSearcher/Preview Content\"";
 				DEVELOPMENT_TEAM = 6VWFU6AND8;
 				ENABLE_PREVIEWS = YES;

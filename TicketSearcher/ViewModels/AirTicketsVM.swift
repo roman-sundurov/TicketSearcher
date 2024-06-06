@@ -27,6 +27,9 @@ class AirTicketsVM: ObservableObject {
     @Published var thereDate: Date = .now // There way
     @Published var showThereDatePicker = false // There way
 
+    /// Using in StubView for the testing purpose
+    @Published var stubViewScreenName = ""
+
     @AppStorage("fromCity")
     var fromCity: String = ""
     @AppStorage("toCity")
