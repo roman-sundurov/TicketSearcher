@@ -116,7 +116,7 @@ struct AirTicketsStartView: View {
                     }
                     .background(Color.tsGrey2)
                     .clipShape(RoundedRectangle(cornerRadius: 16), style: FillStyle())
-                    .padding(.top, 38)
+                    .padding(.top, 20)
                     .padding(.horizontal, 16)
 
                     // MARK: - Offers
@@ -138,7 +138,7 @@ struct AirTicketsStartView: View {
                         .padding(.horizontal, 16)
                     }
                     .scrollIndicators(.visible)
-                    .padding(.top, 26)
+                    .padding(.top, 15)
                 }
             }
             .background(
