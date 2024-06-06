@@ -35,7 +35,7 @@ struct AirTicketsStartView: View {
                                             Text("Откуда - Москва").foregroundColor(.gray)
                                         }
                                         .foregroundStyle(Color.white)
-                                        .onChange(of: viewModel.fromCity) { _, newText in
+                                        .onChange(of: viewModel.fromCity) { newText in
                                             let filtered = newText.filter { $0.isCyrillic }
                                             if filtered != newText {
                                                 viewModel.fromCity = filtered
@@ -61,7 +61,7 @@ struct AirTicketsStartView: View {
 
                                 // MARK: - To block
                                 HStack {
-                                    // I commented on the TextFiled and used the Text below because the technical task says the modal window should open after the user taps the destination field. So I leave the TextFiled as the second option.
+                                    // I commented on the TextFiled and used the Text below because the technical task says the modal window should open after the user taps the destination field. So I leave the TextFiled commented just in case as the second option.
 
                                     // TextField("", text: $toCity)
                                     //     .placeholder(when: toCity.isEmpty) {
@@ -79,17 +79,22 @@ struct AirTicketsStartView: View {
                                     //         showSearchSheet = true
                                     //     }
 
-                                    Text(viewModel.toCity)
-                                        .placeholder(when: viewModel.toCity.isEmpty) {
-                                            Text("Куда - Турция").foregroundColor(.gray)
-                                        }
-                                        .foregroundStyle(Color.white)
-                                        .onTapGesture {
-                                            print("Tap From toTextField") // Using for avoid dissmis keyboard
-                                            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                                            // viewModel.showSearchSheet = true
-                                            appCoordinator.activeSheet = .airTicketsSearch
-                                        }
+                                    HStack {
+                                        Text(viewModel.toCity)
+                                            .placeholder(when: viewModel.toCity.isEmpty) {
+                                                Text("Куда - Турция").foregroundColor(.gray)
+                                            }
+                                            .foregroundStyle(Color.white)
+                                        Spacer(minLength: 0)
+                                    }
+                                    .background(Color.tsGrey4)
+                                    .padding(.trailing)
+                                    .onTapGesture {
+                                        print("Tap From toTextField") // Using for avoid dissmis keyboard
+                                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                                        // viewModel.showSearchSheet = true
+                                        appCoordinator.activeSheet = .airTicketsSearch
+                                    }
 
                                     Spacer(minLength: 0)
 

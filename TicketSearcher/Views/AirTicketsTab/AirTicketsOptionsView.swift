@@ -97,7 +97,7 @@ struct AirTicketsOptionsView: View {
             
             VStack {
                 Spacer()
-                HStack {
+                HStack(spacing: 16) {
                     Button(action: {
                         print("Tap | Bottom menu Filter button")
                     }, label: {

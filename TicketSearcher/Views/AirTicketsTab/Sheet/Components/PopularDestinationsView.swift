@@ -21,7 +21,7 @@ struct PopularDestinationsView: View {
 
                     VStack(alignment: .leading) {
                         Text("Стамбул")
-                            .foregroundStyle(Color.white)
+                            .foregroundColor(Color.white)
                             .fontTitle3()
                         Text("Популярное направление")
                             .fontText2()
@@ -53,7 +53,7 @@ struct PopularDestinationsView: View {
 
                     VStack(alignment: .leading) {
                         Text("Сочи")
-                            .foregroundStyle(Color.white)
+                            .foregroundColor(Color.white)
                             .fontTitle3()
                         Text("Популярное направление")
                             .fontText2()
@@ -85,7 +85,7 @@ struct PopularDestinationsView: View {
 
                     VStack(alignment: .leading) {
                         Text("Пхукет")
-                            .foregroundStyle(Color.white)
+                            .foregroundColor(Color.white)
                             .fontTitle3()
                         Text("Популярное направление")
                             .fontText2()
