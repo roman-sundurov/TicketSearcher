@@ -13,12 +13,17 @@ class AppCoordinator: ObservableObject {
     @Published var rootSheet: AnyView?
     @Published var showSheet = false
 
+    /// Using for the control of NavigationStack screens (for the swipe animation)
+    @Published var airTicketsTabPath: [NavigationStackScreen] = []
+
+    /// Using for the control of Tab screens
     @Published var activeScreen: Screen {
         didSet {
             push(screen: activeScreen)
         }
     }
 
+    /// Using for the control of Sheet screens
     @Published var activeSheet: Sheet? {
         didSet {
             if let activeSheet {
@@ -31,8 +36,8 @@ class AppCoordinator: ObservableObject {
     }
 
     init() {
-        activeScreen = .airTicketsStart
-        push(screen: .airTicketsStart)
+        activeScreen = .airTicketsView
+        push(screen: .airTicketsView)
     }
 
     // MARK: Tab Screens
@@ -97,15 +102,11 @@ class AppCoordinator: ObservableObject {
             .environmentObject(viewModel)
     }
 
-    // MARK: - Controlls
+    // MARK: - Screens' Controls
     private func push(screen: Screen) {
         switch screen {
-        case .airTicketsStart:
+        case .airTicketsView:
             rootView = AnyView(airTickesView())
-        case .airTicketsCountry:
-            rootView = AnyView(airTicketsCountry())
-        case .airTicketsOptions:
-            rootView = AnyView(airTicketsOptionsView())
         case .stub:
             rootView = AnyView(stubView())
         case .hotels:
@@ -119,10 +120,33 @@ class AppCoordinator: ObservableObject {
         }
     }
 
+    /// Control of NavigationStack screens
     private func push(sheet: Sheet) {
         switch sheet {
         case .airTicketsSearch:
             rootSheet = AnyView(airTickets1SearchSheet())
+        }
+    }
+
+    /// Add new NavigationStack screens
+    func pushSwipeScreen(newSwipeScreen: NavigationStackScreen) {
+        airTicketsTabPath.append(newSwipeScreen)
+    }
+
+    /// Go to the level down in the view hierarchy of NavigationStack screens
+    func removeLastSwipeScreen() {
+        airTicketsTabPath.removeLast()
+    }
+
+    // Used in the navigationDestination to handle transitions
+    func getSwipeView(screen: NavigationStackScreen) -> AnyView {
+        switch screen {
+        case .airTicketsStart:
+            return AnyView(airTickesView())
+        case .airTicketsCountry:
+            return AnyView(airTicketsCountry())
+        case .airTicketsOptions:
+            return AnyView(airTicketsOptionsView())
         }
     }
 }

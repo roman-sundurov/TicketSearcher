@@ -20,11 +20,14 @@ struct TabBarView: View {
                             .frame(width: 24, height: 24)
                         Text(button.text)
                             .fontTabText()
-                            .foregroundStyle(viewModel.screenTabBarMatch(screen: viewModel.activeScreen) == button.screen ? Color.blue : Color.tsGrey6)
+                            .foregroundStyle(viewModel.activeScreen == button.screen ? Color.blue : Color.tsGrey6)
                     }
                     .frame(maxWidth: .infinity)
                     .onTapGesture {
                         appCoordinator.activeScreen = button.screen
+                        if button.screen == .airTicketsView {
+                            appCoordinator.airTicketsTabPath = []
+                        }
                     }
                 }
             }
@@ -46,6 +49,6 @@ struct TabBarView: View {
 #Preview {
     TabBarView(
         height: .constant(0),
-        viewModel: TabBarVM(activeScreen: .airTicketsStart)
+        viewModel: TabBarVM(activeScreen: .airTicketsView)
     )
 }
