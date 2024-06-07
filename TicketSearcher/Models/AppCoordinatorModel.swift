@@ -9,9 +9,7 @@ import Foundation
 
 /// Use for control active screen in Coordinator
 enum Screen {
-    case airTicketsStart // В Figma называется "Авиабилеты
-    case airTicketsCountry
-    case airTicketsOptions
+    case airTicketsView // В Figma называется "Авиабилеты
     case stub
     case hotels // В Figma называется "Отели"
     case shorter // В Figma называется "Короче"
@@ -21,4 +19,10 @@ enum Screen {
 
 enum Sheet {
     case airTicketsSearch
+}
+
+enum NavigationStackScreen {
+    case airTicketsStart
+    case airTicketsCountry
+    case airTicketsOptions
 }

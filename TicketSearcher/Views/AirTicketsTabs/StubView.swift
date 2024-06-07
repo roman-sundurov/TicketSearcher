@@ -17,7 +17,7 @@ struct StubView: View {
                 .onTapGesture {
                     appCoordinator.activeSheet = .airTicketsSearch
                     withAnimation(.easeInOut(duration: 2.0)) {
-                        appCoordinator.activeScreen = .airTicketsOptions
+                        appCoordinator.pushSwipeScreen(newSwipeScreen: .airTicketsOptions)
                     }
                 }
             Text(viewModel.stubViewScreenName)

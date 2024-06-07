@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct AirTicketsCountryView: View {
+    @Environment(\.presentationMode)
+    var presentationMode
+
     @EnvironmentObject var appCoordinator: AppCoordinator
     @EnvironmentObject var viewModel: AirTicketsVM
 
@@ -18,13 +21,13 @@ struct AirTicketsCountryView: View {
     }
 
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             HStack {
                 AssetImage.airTicketsCountryBackButton.image
                     .frame(width: 24, height: 24)
                     .padding(.horizontal, 8)
                     .onTapGesture {
-                        appCoordinator.activeScreen = .airTicketsStart
+                        appCoordinator.airTicketsTabPath.removeLast()
                     }
 
                 VStack {
@@ -93,7 +96,7 @@ struct AirTicketsCountryView: View {
                 Color.tsGrey3
             )
             .clipShape(RoundedRectangle(cornerRadius: 16), style: FillStyle())
-            .padding(.top, 47)
+            .padding(.top, 16)
 
             AirTicketsFilters(
                 backDate: $viewModel.backDate,
@@ -102,46 +105,48 @@ struct AirTicketsCountryView: View {
                 showThereDatePicker: $viewModel.showThereDatePicker
             )
             .scrollIndicators(.hidden)
-            .padding(.top, 15)
+            .padding(.top, 10)
 
             VStack {
-                VStack {
-                    HStack {
-                        Text("Прямые рейсы")
-                            .fontTitle2()
-                            .foregroundStyle(Color.tsWhite)
+                ScrollView(.vertical) {
+                    VStack {
+                        HStack {
+                            Text("Прямые рейсы")
+                                .fontTitle2()
+                                .foregroundStyle(Color.tsWhite)
 
-                        Spacer()
-                    }
-                    
-                    ForEach(0..<maxOfferObjects, id: \.self) { index in
-                        VStack {
-                            RecommendedTicketView(
-                                ticketOffer: viewModel.ticketOffers[index],
-                                index: index
-                            )
-                            .padding(.top, 8)
-                            .padding(.bottom, 10)
-                         
-                            if index < maxOfferObjects - 1 {
-                                Divider()
-                                    .background(Color.tsGrey6)
-                                    .frame(height: 1)
+                            Spacer()
+                        }
+
+                        ForEach(0..<maxOfferObjects, id: \.self) { index in
+                            VStack {
+                                RecommendedTicketView(
+                                    ticketOffer: viewModel.ticketOffers[index],
+                                    index: index
+                                )
+                                .padding(.top, 8)
+                                .padding(.bottom, 10)
+
+                                if index < maxOfferObjects - 1 {
+                                    Divider()
+                                        .background(Color.tsGrey6)
+                                        .frame(height: 1)
+                                }
                             }
                         }
                     }
+                    .padding(10)
+                    .padding(.vertical, 18)
                 }
-                .padding(16)
-                .padding(.vertical, 18)
             }
             .background(
                 Color.tsGrey2
             )
             .clipShape(RoundedRectangle(cornerRadius: 16), style: FillStyle())
-            .padding(.top, 15)
+            .padding(.top, 10)
 
             Button(action: {
-                appCoordinator.activeScreen = .airTicketsOptions
+                appCoordinator.pushSwipeScreen(newSwipeScreen: .airTicketsOptions)
             }, label: {
                 HStack {
                     Spacer()
@@ -155,7 +160,7 @@ struct AirTicketsCountryView: View {
             .buttonStyle(BorderedButtonStyle())
             .background(Color.blue)
             .clipShape(RoundedRectangle(cornerRadius: 8), style: FillStyle())
-            .padding(.top, 18)
+            .padding(.top, 10)
 
             Button(action: {
                 priceNotificationToggle.toggle()
@@ -167,7 +172,7 @@ struct AirTicketsCountryView: View {
                         .fontButtonText1()
                         .foregroundStyle(Color.white)
                         .padding(.vertical, 10)
-                    Spacer()
+                    Spacer(minLength: 0)
                     Toggle("", isOn: $priceNotificationToggle)
                 }
             })
@@ -177,7 +182,7 @@ struct AirTicketsCountryView: View {
             .buttonStyle(BorderedButtonStyle())
             .background(Color.blue)
             .clipShape(RoundedRectangle(cornerRadius: 8), style: FillStyle())
-            .padding(.top, 18)
+            .padding(.top, 10)
 
             Spacer()
         }
@@ -186,6 +191,7 @@ struct AirTicketsCountryView: View {
         .onAppear {
             viewModel.getFlightData()
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 

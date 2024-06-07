@@ -17,39 +17,29 @@ class TabBarVM: ObservableObject {
         self.buttonsDetails = [
             TabBarButtonDetails(
                 text: "Авиабилеты",
-                iconName: screenTabBarMatch(screen: activeScreen) == .airTicketsStart ? AssetImage.airTicketsTabBarActive.rawValue : AssetImage.airTicketsTabBarNotActive.rawValue,
-                screen: .airTicketsStart
+                iconName: activeScreen == .airTicketsView ? AssetImage.airTicketsTabBarActive.rawValue : AssetImage.airTicketsTabBarNotActive.rawValue,
+                screen: .airTicketsView
             ),
             TabBarButtonDetails(
                 text: "Отели",
-                iconName: screenTabBarMatch(screen: activeScreen) == .hotels ? AssetImage.hotelTabBarActive.rawValue : AssetImage.hotelTabBarNotActive.rawValue,
+                iconName: activeScreen == .hotels ? AssetImage.hotelTabBarActive.rawValue : AssetImage.hotelTabBarNotActive.rawValue,
                 screen: .hotels
             ),
             TabBarButtonDetails(
                 text: "Короче",
-                iconName: screenTabBarMatch(screen: activeScreen) == .shorter ? AssetImage.shorterTabBarActive.rawValue : AssetImage.shorterTabBarNotActive.rawValue,
+                iconName: activeScreen == .shorter ? AssetImage.shorterTabBarActive.rawValue : AssetImage.shorterTabBarNotActive.rawValue,
                 screen: .shorter
             ),
             TabBarButtonDetails(
                 text: "Подписки",
-                iconName: screenTabBarMatch(screen: activeScreen) == .notifications ? AssetImage.notificationsTabBarActive.rawValue : AssetImage.notificationsTabBarNotActive.rawValue,
+                iconName: activeScreen == .notifications ? AssetImage.notificationsTabBarActive.rawValue : AssetImage.notificationsTabBarNotActive.rawValue,
                 screen: .notifications
             ),
             TabBarButtonDetails(
                 text: "Профили",
-                iconName: screenTabBarMatch(screen: activeScreen) == .profile ? AssetImage.profileTabBarActive.rawValue : AssetImage.profileTabBarNotActive.rawValue,
+                iconName: activeScreen == .profile ? AssetImage.profileTabBarActive.rawValue : AssetImage.profileTabBarNotActive.rawValue,
                 screen: .profile
             )
         ]
-    }
-
-    /// Returns the associated active TabBar Screen
-    func screenTabBarMatch(screen: Screen) -> Screen {
-        switch screen {
-        case Screen.airTicketsCountry, Screen.airTicketsOptions:
-            return Screen.airTicketsStart
-        default:
-            return screen
-        }
     }
 }

@@ -33,7 +33,7 @@ struct AirTicketsOptionsView: View {
                         AssetImage.airTicketsOptionsBackButton.image
                             .frame(width: 14)
                             .onTapGesture {
-                                appCoordinator.activeScreen = .airTicketsCountry
+                                appCoordinator.removeLastSwipeScreen()
                             }
 
                         VStack(alignment: .leading) {
@@ -72,7 +72,7 @@ struct AirTicketsOptionsView: View {
                     alignment: .bottom
                 )
                 .padding(.top, 16)
-                
+
                 ScrollView(.vertical) {
                     ForEach(0..<viewModel.detailedTickets.count, id: \.self) { index in
                         AirTicketDetailView(detailedTicket: viewModel.detailedTickets[index])
@@ -94,7 +94,7 @@ struct AirTicketsOptionsView: View {
             .onAppear {
                 viewModel.getDetailedFlightData()
             }
-            
+
             VStack {
                 Spacer()
                 HStack(spacing: 16) {
@@ -110,7 +110,7 @@ struct AirTicketsOptionsView: View {
                                 .frame(width: 12)
                         })
                     })
-                    
+
                     Button(action: {
                         print("Tap | Bottom menu Price chartbutton")
                     }, label: {
@@ -133,6 +133,7 @@ struct AirTicketsOptionsView: View {
             .padding(.bottom, 10)
         }
         .background(Color.tsBlack)
+        .navigationBarBackButtonHidden(true)
     }
 }
 

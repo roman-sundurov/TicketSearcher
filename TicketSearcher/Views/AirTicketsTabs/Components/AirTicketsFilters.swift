@@ -11,12 +11,12 @@ struct AirTicketsFilters: View {
     @EnvironmentObject var viewModel: AirTicketsVM
 
     // Back way
-    @Binding var backDate: Date// = Date.init(timeIntervalSince1970: 0)
-    @Binding var showBackDatePicker: Bool// = false
+    @Binding var backDate: Date
+    @Binding var showBackDatePicker: Bool
 
     // There way
     @Binding var thereDate: Date
-    @Binding var showThereDatePicker: Bool// = false
+    @Binding var showThereDatePicker: Bool
 
     var thereDateText: (dayMonth: String, weekday: String) {
         viewModel.getDayMonthWeekdayFormat(date: thereDate)
@@ -33,7 +33,7 @@ struct AirTicketsFilters: View {
     var body: some View {
         ScrollView(.horizontal) {
             HStack {
-                // There way
+                // MARK: - There way
                 filterItem(
                     icon: nil,
                     view: {
@@ -53,7 +53,7 @@ struct AirTicketsFilters: View {
                     showThereDatePicker = true
                 }
 
-                // Back way
+                // MARK: - Back way
                 filterItem(
                     icon: backDateText == nil ? AssetImage.returnTicketFilterIcon.image : nil,
                     view: {
@@ -128,6 +128,12 @@ struct AirTicketsFilters: View {
 }
 
 // MARK: - Preview
-// #Preview {
-//     AirTicketsFilters()
-// }
+#Preview {
+    AirTicketsFilters(
+        backDate: .constant(Date.now),
+        showBackDatePicker: .constant(false),
+        thereDate: .constant(Date.now),
+        showThereDatePicker: .constant(false)
+    )
+    .environmentObject(AirTicketsVM.shared)
+}
