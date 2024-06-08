@@ -10,7 +10,6 @@ import SwiftUI
 struct RoutOptionsView: View {
     @EnvironmentObject var appCoordinator: AppCoordinator
     @EnvironmentObject var viewModel: AirTicketsVM
-    // @ObservedObject var viewModel: AirTicketsVM
 
     var body: some View {
         HStack(alignment: .top) {

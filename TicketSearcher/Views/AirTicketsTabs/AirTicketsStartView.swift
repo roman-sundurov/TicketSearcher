@@ -12,13 +12,15 @@ struct AirTicketsStartView: View {
     @EnvironmentObject var viewModel: AirTicketsVM
 
     var body: some View {
-            VStack {
+        NavigationStack(path: $appCoordinator.airTicketsTabPath) {
+            VStack(spacing: 0) {
                 ScrollView(.vertical) {
                     Text("Поиск дешевых авиабилетов")
                         .fontTitle1()
                         .foregroundStyle(Color.noNameColors1)
                         .frame(width: 172)
                         .multilineTextAlignment(.center)
+                        .padding(.top, 20)
 
                     HStack(spacing: 0) {
                         HStack(spacing: 0) {
@@ -61,22 +63,22 @@ struct AirTicketsStartView: View {
 
                                 // MARK: - To block
                                 HStack {
-                                    // I commented on the TextFiled and used the Text below because the technical task says the modal window should open after the user taps the destination field. So I leave the TextFiled commented just in case as the second option.
+                                    // I commented out the code on the TextFiled and used the Text View below because the technical task says the modal window should open after the user taps the destination field. So I leave the TextFiled commented out just in case as the second option.
 
-                                    // TextField("", text: $toCity)
-                                    //     .placeholder(when: toCity.isEmpty) {
+                                    // TextField("", text: $viewModel.toCity)
+                                    //     .placeholder(when: viewModel.toCity.isEmpty) {
                                     //         Text("Куда - Турция").foregroundColor(.gray)
                                     //     }
                                     //     .foregroundStyle(Color.white)
-                                    //     .onChange(of: toCity) { text in
+                                    //     .onChange(of: viewModel.toCity) { text in
                                     //         let filtered = text.filter { $0.isCyrillic }
                                     //         if filtered != text {
-                                    //             self.toCity = filtered
+                                    //             viewModel.toCity = filtered
                                     //         }
                                     //     }
                                     //     .onTapGesture {
                                     //         print("Tap From toTextField") // Using for avoid dissmis keyboard
-                                    //         showSearchSheet = true
+                                    //         viewModel.showSearchSheet = true
                                     //     }
 
                                     HStack {
@@ -126,7 +128,7 @@ struct AirTicketsStartView: View {
                             .foregroundStyle(Color.noNameColors1)
                         Spacer()
                     }
-                    .padding(.top, 32)
+                    .padding(.top, 20)
                     .padding(.horizontal, 16)
 
                     ScrollView(.horizontal) {
@@ -138,16 +140,19 @@ struct AirTicketsStartView: View {
                         .padding(.horizontal, 16)
                     }
                     .scrollIndicators(.visible)
-                    .padding(.top, 15)
                 }
             }
             .background(
                 Color.tsBlack
-                    // .ignoresSafeArea()
+                .ignoresSafeArea()
             )
             .onTapGesture {
                 UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
             }
+            .navigationDestination(for: NavigationStackScreen.self) { screen in
+                appCoordinator.getSwipeView(screen: screen)
+            }
+        }
     }
 }
 

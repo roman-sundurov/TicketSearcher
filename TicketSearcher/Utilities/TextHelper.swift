@@ -8,6 +8,21 @@
 import Foundation
 import SwiftUI
 
+extension String {
+    func isCyrillic() -> Bool {
+        for character in self where !character.isCyrillic {
+            return false
+        }
+        return true
+    }
+}
+
+extension Character {
+    var isCyrillic: Bool {
+        return ("А"..."я").contains(self) || self == "ё" || self == "Ё" || self == " "
+    }
+}
+
 public extension Text {
     func fontTitle1() -> some View {
         self.font(tsCustomFont(size: 22, weight: .semibold))
@@ -45,12 +60,6 @@ public extension Text {
         return Font.system(size: size, weight: weight, design: .default)
     }
 }
-
-// struct FontHelper {
-//     static func customFont(size: CGFloat, weight: Font.Weight) -> Font {
-//         return Font.system(size: size, weight: weight, design: .default)
-//     }
-// }
 
 public extension Text {
     func fontRoutOptionsButton() -> some View {

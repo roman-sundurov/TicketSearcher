@@ -34,7 +34,7 @@ struct PopularDestinationsView: View {
                         if viewModel.fromCity.isEmpty {
                             viewModel.fromCity = "Москва"
                         }
-                        appCoordinator.activeScreen = .airTicketsCountry
+                        appCoordinator.airTicketsTabPath.append(.airTicketsCountry)
                         appCoordinator.activeSheet = nil
                     }
 
@@ -66,7 +66,7 @@ struct PopularDestinationsView: View {
                         if viewModel.fromCity.isEmpty {
                             viewModel.fromCity = "Москва"
                         }
-                        appCoordinator.activeScreen = .airTicketsCountry
+                        appCoordinator.airTicketsTabPath.append(.airTicketsCountry)
                         appCoordinator.activeSheet = nil
                     }
 
@@ -98,7 +98,7 @@ struct PopularDestinationsView: View {
                         if viewModel.fromCity.isEmpty {
                             viewModel.fromCity = "Москва"
                         }
-                        appCoordinator.activeScreen = .airTicketsCountry
+                        appCoordinator.airTicketsTabPath.append(.airTicketsCountry)
                         appCoordinator.activeSheet = nil
                     }
 
