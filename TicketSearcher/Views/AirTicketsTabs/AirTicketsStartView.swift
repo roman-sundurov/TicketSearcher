@@ -96,7 +96,7 @@ struct AirTicketsStartView: View {
                                         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                                         // viewModel.showSearchSheet = true
                                         appCoordinator.activeSheet = .airTicketsSearch
-                                    // }
+                                    }
 
                                     Spacer(minLength: 0)
 
