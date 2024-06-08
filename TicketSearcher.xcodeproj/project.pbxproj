@@ -52,7 +52,7 @@
 		4773381C2C0CEAF80076AEF9 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 4773381B2C0CEAF80076AEF9 /* Alamofire */; };
 		477338222C0CFCDB0076AEF9 /* CountryOfferView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477338212C0CFCDB0076AEF9 /* CountryOfferView.swift */; };
 		477338242C0D0BBB0076AEF9 /* StringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477338232C0D0BBB0076AEF9 /* StringHelper.swift */; };
-		477338282C0D544E0076AEF9 /* AirTicketsSearchSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477338272C0D544E0076AEF9 /* AirTicketsSearchSheet.swift */; };
+		477338282C0D544E0076AEF9 /* CountrySearchSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477338272C0D544E0076AEF9 /* CountrySearchSheet.swift */; };
 		4773382A2C0D6B380076AEF9 /* RoutOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477338292C0D6B380076AEF9 /* RoutOptionsView.swift */; };
 		4773382D2C0D763C0076AEF9 /* PopularDestinationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4773382C2C0D763C0076AEF9 /* PopularDestinationsView.swift */; };
 		478C3C352C0FE26B00B54CD6 /* AirTicketsOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478C3C342C0FE26B00B54CD6 /* AirTicketsOptionsView.swift */; };
@@ -113,9 +113,10 @@
 		477338172C0CEA920076AEF9 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		477338212C0CFCDB0076AEF9 /* CountryOfferView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryOfferView.swift; sourceTree = "<group>"; };
 		477338232C0D0BBB0076AEF9 /* StringHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHelper.swift; sourceTree = "<group>"; };
-		477338272C0D544E0076AEF9 /* AirTicketsSearchSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirTicketsSearchSheet.swift; sourceTree = "<group>"; };
+		477338272C0D544E0076AEF9 /* CountrySearchSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountrySearchSheet.swift; sourceTree = "<group>"; };
 		477338292C0D6B380076AEF9 /* RoutOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutOptionsView.swift; sourceTree = "<group>"; };
 		4773382C2C0D763C0076AEF9 /* PopularDestinationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularDestinationsView.swift; sourceTree = "<group>"; };
+		477675B22C13EC1D008B2737 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		478C3C342C0FE26B00B54CD6 /* AirTicketsOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirTicketsOptionsView.swift; sourceTree = "<group>"; };
 		478C3C362C0FF91000B54CD6 /* AirTicketDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirTicketDetailView.swift; sourceTree = "<group>"; };
 		47E188272C09271B00F31935 /* TicketSearcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicketSearcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -264,7 +265,7 @@
 		4773382B2C0D75FA0076AEF9 /* Sheet */ = {
 			isa = PBXGroup;
 			children = (
-				477338272C0D544E0076AEF9 /* AirTicketsSearchSheet.swift */,
+				477338272C0D544E0076AEF9 /* CountrySearchSheet.swift */,
 				470088DA2C0EADDE004C98D5 /* TicketDateSheet.swift */,
 				470088D22C0E45D3004C98D5 /* Components */,
 			);
@@ -295,6 +296,7 @@
 		47E188292C09271B00F31935 /* TicketSearcher */ = {
 			isa = PBXGroup;
 			children = (
+				477675B22C13EC1D008B2737 /* Info.plist */,
 				47E1882A2C09271B00F31935 /* TicketSearcherApp.swift */,
 				47063B022C09573E00C5BA1E /* Coordinators */,
 				47063AFD2C0955C800C5BA1E /* Models */,
@@ -516,7 +518,7 @@
 				47E1882B2C09271B00F31935 /* TicketSearcherApp.swift in Sources */,
 				47063B112C0A45F100C5BA1E /* NotificationsVM.swift in Sources */,
 				47063B042C09575400C5BA1E /* AppCoordinator.swift in Sources */,
-				477338282C0D544E0076AEF9 /* AirTicketsSearchSheet.swift in Sources */,
+				477338282C0D544E0076AEF9 /* CountrySearchSheet.swift in Sources */,
 				47063AFF2C0955E000C5BA1E /* TabBarModel.swift in Sources */,
 				47063B132C0A460D00C5BA1E /* ProfileVM.swift in Sources */,
 				470088D62C0E4B3A004C98D5 /* AirTicketsCountryView.swift in Sources */,
@@ -714,6 +716,7 @@
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TicketSearcher/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -725,7 +728,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.1;
+				MARKETING_VERSION = 0.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.romansundurov.TicketSearcher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -752,6 +755,7 @@
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TicketSearcher/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -763,7 +767,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.1;
+				MARKETING_VERSION = 0.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.romansundurov.TicketSearcher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

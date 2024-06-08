@@ -98,7 +98,7 @@ class AppCoordinator: ObservableObject {
     // AirTickets tab
     private func airTickets1SearchSheet() -> some View {
         let viewModel = AirTicketsVM.shared
-        return AirTickets1SearchSheet()
+        return CountrySearchSheet()
             .environmentObject(viewModel)
     }
 
