@@ -12,12 +12,12 @@ The TestFlight link: [https://testflight.apple.com/join/06boDdpv](https://testfl
 - Other: Git-Flow, RESTful API
 
 ## Features
-The minimal deployment version is iOS 16.0
-The application uses three different API calls:
-1. https://run.mocky.io/v3/214a1713-bac0-4853-907c-a1dfc3cd05fd
-2. https://run.mocky.io/v3/7e55bf02-89ff-4847-9eb7-7d83ef884017
-3. https://run.mocky.io/v3/670c3d56-7f03-4237-9e34-d437a9e56ebf
-e
+- The minimal deployment version is iOS 16.0.
+- The application uses three different API calls:
+  - https://run.mocky.io/v3/214a1713-bac0-4853-907c-a1dfc3cd05fd
+  - https://run.mocky.io/v3/7e55bf02-89ff-4847-9eb7-7d83ef884017
+  - https://run.mocky.io/v3/670c3d56-7f03-4237-9e34-d437a9e56ebf
+
 ## Note
 - The requirements for the test did not specify that all elements had to be clickable and functional.
 - I based my work on the mockups provided in Figma, so I followed the given design and didn't have any influence on it.
